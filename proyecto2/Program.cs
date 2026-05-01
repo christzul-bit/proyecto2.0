@@ -87,6 +87,35 @@ do
         case 1:
             break;
         case 2:
+            Console.WriteLine("                              Reglas del juego");
+            Console.WriteLine(@"
+    1.  Funcionamiento general del juego
+        1.   El juego se desarrolla sobre un tablero representado por una matriz de 8x8.
+        2.   Cada posición de la matriz corresponde a una casilla del tablero.
+        3.   El tablero debe mostrarse en consola en cada turno de forma clara, permitiendo a los jugadores
+             ver el estado actual del juego.
+        Cada jugador contará con las siguientes piezas:
+            • 1 Rey
+            • 2 Torres
+            • 4 Soldados
+        Estas piezas deben colocarse en posiciones iniciales definidas automáticamente por el sistema.
+
+
+    2.  Movimiento de piezas
+        Durante su turno, el jugador debe ingresar la posición de origen y la posición de destino, indicando fila y columna.
+        El sistema no debe ejecutar el movimiento  directamente. Primero debe validar completamente que el movimiento sea correcto según las reglas del juego. 
+
+
+    3.  Reglas de movimiento
+        Cada tipo de pieza tiene un comportamiento específico que debe respetarse en todo momento.
+            • Rey: puede moverse una sola casilla en cualquier dirección (horizontal, vertical o diagonal).
+            • Torre: puede moverse en línea recta (horizontal o vertical), recorriendo varias casillas si el camino está libre. No puede saltar piezas.
+            • Soldado:
+                 avanza una casilla hacia adelante
+                 ataca en diagonal
+                 no puede retroceder
+            Si un movimiento no cumple estas reglas, el sistema debe rechazarlo.
+");
             break;
         case 3:
             break;
