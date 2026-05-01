@@ -7,6 +7,8 @@ bool seguro, valido;
 string password;
 int cantidad, opcion = 0;
 // procedimiento para cambiar las teclas por *
+
+
 void IngresarPssw()
 {
     password = "";
@@ -85,6 +87,23 @@ do
     switch (opcion)
     {
         case 1:
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            string[,] Table = { {"|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|"}, 
+                                {"|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|"},
+                                {"|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|"},
+                                {"|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|"},
+                                {"|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|"},
+                                {"|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|"},
+                                {"|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|"},
+                                {"|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|"}};
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    Console.Write($"{Table[i,j]} ");
+                }
+                Console.WriteLine();
+            }
             break;
         case 2:
             Console.WriteLine("                              Reglas del juego");
