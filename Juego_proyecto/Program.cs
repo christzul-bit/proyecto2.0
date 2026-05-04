@@ -10,14 +10,14 @@ namespace Juego_proyecto
     {
         public class Pieza
         {
-            public int Fila { get; set; }
-            public int Columna { get; set; }
-            public bool Juega { get; set; }
+            public int Fila;
+            public int Columna;
+            public bool Juega;
         }
         public class King : Pieza
         {
             public string Figura => "|K|";
-            public string Color { get; set; } = "";
+            public string Color;
 
 
             public void MostrarPosicion(string[,] tablero)
@@ -34,7 +34,7 @@ namespace Juego_proyecto
         public class Tower : Pieza
         {
             public string Figura => "|T|";
-            public string Color { get; set; } = "";
+            public string Color;
 
             public void MostrarPosicion(string[,] tablero)
             {
@@ -51,7 +51,7 @@ namespace Juego_proyecto
         public class Soldier : Pieza
         {
             public string Figura => "|S|";
-            public string Color { get; set; } = "";
+            public string Color;
             public void MostrarPosicion(string[,] tablero)
             {
                 tablero[Fila, Columna] = Figura;
@@ -68,13 +68,96 @@ namespace Juego_proyecto
             //password admin123+
             //user player1
 
+            //Creando objetos/piezas
+            King R1 = new King();
+            R1.Juega = true;
+            R1.Color = "Red";
+            R1.Fila = 0;
+            R1.Columna = 4;
+            
+            King R2 = new King();
+            R2.Juega = true;
+            R2.Color = "Green";
+            R2.Fila = 7;
+            R2.Columna = 3;
+
+            Tower T1 = new Tower();
+            T1.Juega = true;
+            T1.Color = "Red";
+            T1.Fila = 0;
+            T1.Columna = 2;
+
+            Tower T2 = new Tower();
+            T2.Juega = true;
+            T2.Color = "Red";
+            T2.Fila = 0;
+            T2.Columna = 5;
+
+            Tower T3 = new Tower();
+            T3.Juega = true;
+            T3.Color = "Green";
+            T3.Fila = 7;
+            T3.Columna = 2;
+
+            Tower T4 = new Tower();
+            T4.Juega = true;
+            T4.Color = "Green";
+            T4.Fila = 7;
+            T4.Columna = 5;
+
+            Soldier S1 = new Soldier();
+            S1.Juega = true;
+            S1.Color = "red";
+            S1.Fila = 1;
+            S1.Columna = 2;
+
+            Soldier S2 = new Soldier();
+            S2.Juega = true;
+            S2.Color = "red";
+            S2.Fila = 1;
+            S2.Columna = 3;
+
+            Soldier S3 = new Soldier();
+            S3.Juega = true;
+            S3.Color = "red";
+            S3.Fila = 1;
+            S3.Columna = 4;
+
+            Soldier S4 = new Soldier();
+            S4.Juega = true;
+            S4.Color = "red";
+            S4.Fila = 1;
+            S4.Columna = 5;
+
+            Soldier S5 = new Soldier();
+            S5.Juega = true;
+            S5.Color = "Green";
+            S5.Fila = 6;
+            S5.Columna = 2;
+
+            Soldier S6 = new Soldier();
+            S6.Juega = true;
+            S6.Color = "Green";
+            S6.Fila = 6;
+            S6.Columna = 3;
+
+            Soldier S7 = new Soldier();
+            S7.Juega = true;
+            S7.Color = "Green";
+            S7.Fila = 6;
+            S7.Columna = 4;
+
+            Soldier S8 = new Soldier();
+            S8.Juega = true;
+            S8.Color = "Green";
+            S8.Fila = 6;
+            S8.Columna = 5;
+
             //variable de seguro, sirve como verificacion de las credenciales. variable valido, sirve para varificar el tryparse
             bool seguro, valido;
             string password;
             int cantidad, opcion = 0;
             // procedimiento para cambiar las teclas por *
-
-
             void IngresarPssw()
             {
                 password = "";
@@ -165,11 +248,36 @@ namespace Juego_proyecto
                                 {"|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|"},
                                 {"|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|"},
                                 {"|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|"}};
+                        R1.MostrarPosicion(Table);
+                        R2.MostrarPosicion(Table);
+                        T1.MostrarPosicion(Table);
+                        T2.MostrarPosicion(Table);
+                        T3.MostrarPosicion(Table);
+                        T4.MostrarPosicion(Table);
+                        S1.MostrarPosicion(Table);
+                        S2.MostrarPosicion(Table);
+                        S3.MostrarPosicion(Table);
+                        S4.MostrarPosicion(Table);
+                        S5.MostrarPosicion(Table);
+                        S6.MostrarPosicion(Table);
+                        S7.MostrarPosicion(Table);
+                        S8.MostrarPosicion(Table);
                         for (int i = 0; i < 8; i++)
                         {
                             for (int j = 0; j < 8; j++)
                             {
-                                Console.Write($"{Table[i, j]} ");
+                                if (Table[i, j] == "|-|" || Table[i, j] == "|=|")
+                                {
+                                    
+                                    Console.ForegroundColor = ConsoleColor.DarkCyan;
+                                    Console.Write($"{Table[i, j]} ");
+                                }
+                                else
+                                {
+                                    
+                                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                                    Console.Write($"{Table[i, j]} ");
+                                }
                             }
                             Console.WriteLine();
                         }
