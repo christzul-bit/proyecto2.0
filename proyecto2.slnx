@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="Juego_proyecto/Juego_proyecto.csproj" Id="3aa15bb6-8ed6-45d8-80ad-abc1a62f094e" />
   <Project Path="king/king.csproj" Id="b480a452-87b6-42f2-b29a-83fc4b517db5" />
   <Project Path="pieces/pieces.csproj" Id="7a5e1942-1153-46d4-974b-f51ffb87b06e" />
   <Project Path="probando123/probando123.csproj" Id="6a6a82c2-11ca-42bd-a02d-a2c96795a410" />
