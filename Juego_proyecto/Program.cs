@@ -62,6 +62,32 @@ namespace Juego_proyecto
                 Columna = c;
             }
         }
+
+        public class  Jugador
+        {
+            public string Nombre;
+            public string Color;
+            public bool Turno;
+
+            public Jugador(string nombre, bool turno)
+            {
+                Nombre = nombre;
+                Turno = turno;
+            }
+            public void MostrarTurno()
+            {
+                Console.WriteLine("=================================");
+                Console.WriteLine("Turno de: " + Nombre);
+                Console.WriteLine("=================================");
+            }
+
+            public void CambiarTurno(Jugador jugador2)
+            {
+                Turno = false;
+                jugador2.Turno = true;
+            }
+        }
+
         static void Main(string[] args)
         {
             //Menu de inicio y declaracion de credenciales
@@ -153,6 +179,9 @@ namespace Juego_proyecto
             S8.Fila = 6;
             S8.Columna = 5;
 
+            Jugador J1 = new Jugador ("Jugador 1", true);
+            Jugador J2 = new Jugador("Jugador 2", false);
+
             //variable de seguro, sirve como verificacion de las credenciales. variable valido, sirve para varificar el tryparse
             bool seguro, valido;
             string password;
@@ -197,6 +226,7 @@ namespace Juego_proyecto
                 }
             }
             //login de inicio
+           bool correcto = false;
             do
             {
                 Console.ForegroundColor = ConsoleColor.Blue;
@@ -220,6 +250,7 @@ namespace Juego_proyecto
                     seguro = false;
                 }
             } while (seguro == false);
+            int fila=0, columna=0;
             do
             {
                 do
@@ -281,35 +312,186 @@ namespace Juego_proyecto
                             }
                             Console.WriteLine();
                         }
-                        break;
+
+                        if (J1.Turno)
+                        {
+                            J1.MostrarTurno();
+                        }
+                        else
+                        {
+                            J2.MostrarTurno();
+                        }
+                        
+                        Console.WriteLine(@"Seleccione pieza:
+1. Rey
+2. Torre
+3. Soldado
+Ingrese una opción");
+                        int opcionPieza=int.Parse(Console.ReadLine());
+
+                        if (opcionPieza == 1)
+                        {
+                            Console.WriteLine("Seleccionaste Rey");
+                            Console.WriteLine("Ingrese coordenadas ");
+                            bool valido1;
+                            do
+                            {
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.WriteLine("Ingrese la fila ");
+                                valido1 = int.TryParse(Console.ReadLine(), out fila);
+                                if (!valido1)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("Error: solo se permiten numeros.");
+                                }
+                                else if (fila < 0 || fila > 7)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("Error la fila debe estar entre 0 y 7.");
+                                    valido1 = false;
+                                }
+                            } while (!valido1);
+                            bool valido3;
+                            do
+                            {
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.WriteLine("Ingrese la columna  ");
+                                valido3 = int.TryParse(Console.ReadLine(), out columna);
+                                if (!valido3)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("Error: solo se permiten numeros.");
+                                }
+                                else if (columna < 0 || columna > 7)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("Error la columna debe estar entre 0 y 7.");
+                                    valido3 = false;
+                                }
+                            } while (!valido3);
+                            break;
+                        }
+                        else if (opcionPieza == 2)
+                        {
+                            Console.WriteLine("Seleccionaste Torre");
+                            Console.WriteLine("Ingrese coordenadas ");
+                            bool valido1;
+                            do
+                            {
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.WriteLine("Ingrese la fila ");
+                                valido1 = int.TryParse(Console.ReadLine(), out fila);
+                                if (!valido1)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("Error: solo se permiten numeros.");
+                                }
+                                else if (fila < 0 || fila > 7)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("Error la fila debe estar entre 0 y 7.");
+                                    valido1 = false;
+                                }
+                            } while (!valido1);
+                            bool valido3;
+                            do
+                            {
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.WriteLine("Ingrese la columna  ");
+                                valido3 = int.TryParse(Console.ReadLine(), out columna);
+                                if (!valido3)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("Error: solo se permiten numeros.");
+                                }
+                                else if (columna < 0 || columna > 7)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("Error la columna debe estar entre 0 y 7.");
+                                    valido3 = false;
+                                }
+                            } while (!valido3);
+                            break;
+                        }
+                        else if (opcionPieza == 3)
+                        {
+                            Console.WriteLine("Seleccionaste Soldado");
+                            Console.WriteLine("Ingrese coordenadas ");
+                            bool valido1;
+                            do
+                            {
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.WriteLine("Ingrese la fila ");
+                                valido1 = int.TryParse(Console.ReadLine(), out fila);
+                                if (!valido1)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("Error: solo se permiten numeros.");
+                                }
+                                else if (fila < 0 || fila > 7)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("Error la fila debe estar entre 0 y 7.");
+                                    valido1 = false;
+                                }
+                            } while (!valido1);
+                            bool valido3;
+                            do
+                            {
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.WriteLine("Ingrese la columna  ");
+                                valido3 = int.TryParse(Console.ReadLine(), out columna);
+                                if (!valido3)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("Error: solo se permiten numeros.");
+                                }
+                                else if (columna < 0 || columna > 7)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("Error la columna debe estar entre 0 y 7.");
+                                    valido3 = false;
+                                }
+                            } while (!valido3);
+                            break;
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("Opción inválida.");
+                        }
+
+                       
+                         break;
+
+
                     case 2:
                         Console.WriteLine("                              Reglas del juego");
                         Console.WriteLine(@"
-                                    1.  Funcionamiento general del juego
-                                            1.   El juego se desarrolla sobre un tablero de 8x8.
-                                            2.   Cada casilla del tablero posee una coordenada dicha por número de fila y número de columna.
-                                            3.   El tablero debe mostrara en consola en cada turno de forma clara, permitiendo a los jugadores
-                                                ver el estado actual del juego.
-                                            Cada jugador contará con las siguientes piezas:
-                                                • 1 Rey
-                                                • 2 Torres
-                                                • 4 Soldados
+                     1.  Funcionamiento general del juego
+                            1.   El juego se desarrolla sobre un tablero de 8x8.
+                            2.   Cada casilla del tablero posee una coordenada dicha por número de fila y número de columna.
+                            3.   El tablero debe mostrara en consola en cada turno de forma clara, permitiendo a los jugadores
+                                 ver el estado actual del juego.
+                           Cada jugador contará con las siguientes piezas:
+                                • 1 Rey
+                                • 2 Torres
+                                • 4 Soldados
 
 
-                                    2.  Movimiento de piezas
-                                            Durante su turno, el jugador debe ingresar la posición de origen y la posición de destino, indicando fila y columna.
-                                            El sistema no ejecutara el movimiento directamente. Primero validara completamente que el movimiento sea valido. 
+                    2.  Movimiento de piezas
+                             Durante su turno, el jugador debe ingresar la posición de origen y la posición de destino, indicando fila y columna.
+                             El sistema no ejecutara el movimiento directamente. Primero validara completamente que el movimiento sea valido. 
 
 
-                                    3.  Reglas de movimiento
-                                            Cada tipo de pieza tiene un comportamiento específico que debe respetarse en todo momento.
-                                                • Rey: puede moverse una sola casilla en cualquier dirección (horizontal, vertical o diagonal).
-                                                • Torre: puede moverse en línea recta (horizontal o vertical), recorriendo varias casillas si el camino está libre. No puede saltar piezas.
-                                                • Soldado:
-                                                    avanza una casilla hacia adelante
-                                                    ataca en diagonal
-                                                    no puede retroceder
-                                            Si un movimiento no cumple estas reglas, el sistema lo rechazara.
+                     3.  Reglas de movimiento
+                            Cada tipo de pieza tiene un comportamiento específico que debe respetarse en todo momento.
+                                 • Rey: puede moverse una sola casilla en cualquier dirección (horizontal, vertical o diagonal).
+                                 • Torre: puede moverse en línea recta (horizontal o vertical), recorriendo varias casillas si el camino está libre. No puede saltar piezas.
+                                 • Soldado: avanza una casilla hacia adelante
+                                            ataca en diagonal
+                                            no puede retroceder
+                            Si un movimiento no cumple estas reglas, el sistema lo rechazara.
                         ");
                         break;
                     case 3:
