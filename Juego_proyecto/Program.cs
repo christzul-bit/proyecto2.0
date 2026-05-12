@@ -13,6 +13,11 @@ namespace Juego_proyecto
             public int Fila;
             public int Columna;
             public bool Juega;
+
+            public void DoblePosicion(string[,] tablero)
+            {
+                
+            }
         }
         public class King : Pieza
         {
@@ -312,7 +317,7 @@ namespace Juego_proyecto
                             }
                             Console.WriteLine();
                         }
-
+                        Console.ForegroundColor = ConsoleColor.DarkBlue;
                         if (J1.Turno)
                         {
                             J1.MostrarTurno();
@@ -495,6 +500,8 @@ Ingrese una opción");
                         ");
                         break;
                     case 3:
+                            
+
                         break;
                     case 4:
                         Console.ForegroundColor = ConsoleColor.Blue;
