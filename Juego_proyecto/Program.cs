@@ -232,6 +232,7 @@ namespace Juego_proyecto
             }
             //login de inicio
            bool correcto = false;
+            bool correcto4 = false;
             do
             {
                 Console.ForegroundColor = ConsoleColor.Blue;
@@ -255,7 +256,7 @@ namespace Juego_proyecto
                     seguro = false;
                 }
             } while (seguro == false);
-            int fila=0, columna=0;
+            int fila=0, columna=0, opcionPieza = 0;
             do
             {
                 do
@@ -304,13 +305,13 @@ namespace Juego_proyecto
                             {
                                 if (Table[i, j] == "|-|" || Table[i, j] == "|=|")
                                 {
-                                    
+
                                     Console.ForegroundColor = ConsoleColor.DarkCyan;
                                     Console.Write($"{Table[i, j]} ");
                                 }
                                 else
                                 {
-                                    
+
                                     Console.ForegroundColor = ConsoleColor.DarkRed;
                                     Console.Write($"{Table[i, j]} ");
                                 }
@@ -326,14 +327,29 @@ namespace Juego_proyecto
                         {
                             J2.MostrarTurno();
                         }
-                        
-                        Console.WriteLine(@"Seleccione pieza:
+
+                        do
+                        {
+                            try
+                            {
+                                Console.WriteLine(@"Seleccione pieza:
 1. Rey
 2. Torre
 3. Soldado
 Ingrese una opción");
-                        int opcionPieza=int.Parse(Console.ReadLine());
+                                opcionPieza = int.Parse(Console.ReadLine());
+                                correcto4 = true;
+                            }
 
+                            catch (Exception ex)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("Error: opción inválida.");
+                                Console.WriteLine(ex.Message);
+                                correcto4 = false;
+                                Console.ResetColor();
+                            }
+                        } while (!correcto4);
                         if (opcionPieza == 1)
                         {
                             Console.WriteLine("Seleccionaste Rey");
@@ -458,6 +474,7 @@ Ingrese una opción");
                                     valido3 = false;
                                 }
                             } while (!valido3);
+
                             break;
                         }
                         else
@@ -466,8 +483,40 @@ Ingrese una opción");
                             Console.WriteLine("Opción inválida.");
                         }
 
-                       
-                         break;
+                        if (J1.Turno)
+                        {
+                            if (opcion == 1)
+                            {
+                                R1.MoverRey(fila, columna);
+                            }
+                            else if (opcion == 2)
+                            {
+                                T1.MoverTorre(fila, columna);
+                            }
+                            else if (opcion == 3)
+                            {
+                                S1.MoverSoldado(fila, columna);
+                            }
+                            J1.CambiarTurno(J2);
+                        }
+                        else
+                        {
+                            if (opcion == 1)
+                            {
+                                R2.MoverRey(fila, columna);
+                            }
+                            else if (opcion == 2)
+                            {
+                                T2.MoverTorre(fila, columna);
+                            }
+                            else if (opcion == 3)
+                            {
+                                S2.MoverSoldado(fila, columna);
+                            }
+                            J2.CambiarTurno(J1);
+                        }
+
+                        break;
 
 
                     case 2:
