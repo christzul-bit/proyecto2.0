@@ -86,10 +86,15 @@ namespace Juego_proyecto
                 Console.WriteLine("=================================");
             }
 
-            public void CambiarTurno(Jugador jugador2)
+            public void CambiarTurno()
             {
-                Turno = false;
-                jugador2.Turno = true;
+                if(Turno == true)
+                {
+                    Turno = false;
+                }else
+                {
+                    Turno= true;
+                }
             }
         }
 
@@ -190,7 +195,7 @@ namespace Juego_proyecto
             //variable de seguro, sirve como verificacion de las credenciales. variable valido, sirve para varificar el tryparse
             bool seguro, valido;
             string password;
-            int cantidad, opcion = 0;
+            int cantidad, opcion = 0, column = 0, row =0;
             // procedimiento para cambiar las teclas por *
             void IngresarPssw()
             {
@@ -229,6 +234,91 @@ namespace Juego_proyecto
                 {
                     seguro = true;
                 }
+            }
+            // procedimiento para mostrar el tablareo y jugadas
+            void Vertablero()
+            {
+                string[,] Table = { {"|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|"},
+                                {"|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|"},
+                                {"|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|"},
+                                {"|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|"},
+                                {"|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|"},
+                                {"|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|"},
+                                {"|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|"},
+                                {"|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|"}};
+                R1.MostrarPosicion(Table);
+                R2.MostrarPosicion(Table);
+                T1.MostrarPosicion(Table);
+                T2.MostrarPosicion(Table);
+                T3.MostrarPosicion(Table);
+                T4.MostrarPosicion(Table);
+                S1.MostrarPosicion(Table);
+                S2.MostrarPosicion(Table);
+                S3.MostrarPosicion(Table);
+                S4.MostrarPosicion(Table);
+                S5.MostrarPosicion(Table);
+                S6.MostrarPosicion(Table);
+                S7.MostrarPosicion(Table);
+                S8.MostrarPosicion(Table);
+                for (int i = 0; i < 8; i++)
+                {
+                    for (int j = 0; j < 8; j++)
+                    {
+                        if (Table[i, j] == "|-|" || Table[i, j] == "|=|")
+                        {
+
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            Console.Write($"{Table[i, j]} ");
+                        }
+                        else
+                        {
+
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Console.Write($"{Table[i, j]} ");
+                        }
+                    }
+                    Console.WriteLine();
+                }
+            }
+            // procedimiento para ingresar las coord
+            void Cords()
+            {
+                bool valido1;
+                do
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("Ingrese la fila ");
+                    valido1 = int.TryParse(Console.ReadLine(), out row);
+                    if (!valido1)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Error: solo se permiten numeros.");
+                    }
+                    else if (row < 0 || row > 7)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Error la fila debe estar entre 0 y 7.");
+                        valido1 = false;
+                    }
+                } while (!valido1);
+                bool valido3;
+                do
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("Ingrese la columna  ");
+                    valido3 = int.TryParse(Console.ReadLine(), out column);
+                    if (!valido3)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Error: solo se permiten numeros.");
+                    }
+                    else if (column < 0 || column > 7)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Error la columna debe estar entre 0 y 7.");
+                        valido3 = false;
+                    }
+                } while (!valido3);
             }
             //login de inicio
            bool correcto = false;
@@ -277,54 +367,16 @@ namespace Juego_proyecto
                 {
                     case 1:
                         Console.ForegroundColor = ConsoleColor.DarkCyan;
-                        string[,] Table = { {"|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|"},
-                                {"|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|"},
-                                {"|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|"},
-                                {"|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|"},
-                                {"|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|"},
-                                {"|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|"},
-                                {"|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|"},
-                                {"|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|"}};
-                        R1.MostrarPosicion(Table);
-                        R2.MostrarPosicion(Table);
-                        T1.MostrarPosicion(Table);
-                        T2.MostrarPosicion(Table);
-                        T3.MostrarPosicion(Table);
-                        T4.MostrarPosicion(Table);
-                        S1.MostrarPosicion(Table);
-                        S2.MostrarPosicion(Table);
-                        S3.MostrarPosicion(Table);
-                        S4.MostrarPosicion(Table);
-                        S5.MostrarPosicion(Table);
-                        S6.MostrarPosicion(Table);
-                        S7.MostrarPosicion(Table);
-                        S8.MostrarPosicion(Table);
-                        for (int i = 0; i < 8; i++)
-                        {
-                            for (int j = 0; j < 8; j++)
-                            {
-                                if (Table[i, j] == "|-|" || Table[i, j] == "|=|")
-                                {
-
-                                    Console.ForegroundColor = ConsoleColor.DarkCyan;
-                                    Console.Write($"{Table[i, j]} ");
-                                }
-                                else
-                                {
-
-                                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                                    Console.Write($"{Table[i, j]} ");
-                                }
-                            }
-                            Console.WriteLine();
-                        }
-                        Console.ForegroundColor = ConsoleColor.DarkBlue;
+                        Vertablero();
+                        
                         if (J1.Turno)
                         {
+                            Console.ForegroundColor = ConsoleColor.DarkBlue;
                             J1.MostrarTurno();
                         }
                         else
                         {
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
                             J2.MostrarTurno();
                         }
 
@@ -354,128 +406,21 @@ Ingrese una opción");
                         {
                             Console.WriteLine("Seleccionaste Rey");
                             Console.WriteLine("Ingrese coordenadas ");
-                            bool valido1;
-                            do
-                            {
-                                Console.ForegroundColor = ConsoleColor.White;
-                                Console.WriteLine("Ingrese la fila ");
-                                valido1 = int.TryParse(Console.ReadLine(), out fila);
-                                if (!valido1)
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Red;
-                                    Console.WriteLine("Error: solo se permiten numeros.");
-                                }
-                                else if (fila < 0 || fila > 7)
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Red;
-                                    Console.WriteLine("Error la fila debe estar entre 0 y 7.");
-                                    valido1 = false;
-                                }
-                            } while (!valido1);
-                            bool valido3;
-                            do
-                            {
-                                Console.ForegroundColor = ConsoleColor.White;
-                                Console.WriteLine("Ingrese la columna  ");
-                                valido3 = int.TryParse(Console.ReadLine(), out columna);
-                                if (!valido3)
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Red;
-                                    Console.WriteLine("Error: solo se permiten numeros.");
-                                }
-                                else if (columna < 0 || columna > 7)
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Red;
-                                    Console.WriteLine("Error la columna debe estar entre 0 y 7.");
-                                    valido3 = false;
-                                }
-                            } while (!valido3);
-                            break;
+                            Cords();
                         }
                         else if (opcionPieza == 2)
                         {
                             Console.WriteLine("Seleccionaste Torre");
+                           
                             Console.WriteLine("Ingrese coordenadas ");
-                            bool valido1;
-                            do
-                            {
-                                Console.ForegroundColor = ConsoleColor.White;
-                                Console.WriteLine("Ingrese la fila ");
-                                valido1 = int.TryParse(Console.ReadLine(), out fila);
-                                if (!valido1)
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Red;
-                                    Console.WriteLine("Error: solo se permiten numeros.");
-                                }
-                                else if (fila < 0 || fila > 7)
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Red;
-                                    Console.WriteLine("Error la fila debe estar entre 0 y 7.");
-                                    valido1 = false;
-                                }
-                            } while (!valido1);
-                            bool valido3;
-                            do
-                            {
-                                Console.ForegroundColor = ConsoleColor.White;
-                                Console.WriteLine("Ingrese la columna  ");
-                                valido3 = int.TryParse(Console.ReadLine(), out columna);
-                                if (!valido3)
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Red;
-                                    Console.WriteLine("Error: solo se permiten numeros.");
-                                }
-                                else if (columna < 0 || columna > 7)
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Red;
-                                    Console.WriteLine("Error la columna debe estar entre 0 y 7.");
-                                    valido3 = false;
-                                }
-                            } while (!valido3);
-                            break;
+                            Cords();
+
                         }
                         else if (opcionPieza == 3)
                         {
                             Console.WriteLine("Seleccionaste Soldado");
                             Console.WriteLine("Ingrese coordenadas ");
-                            bool valido1;
-                            do
-                            {
-                                Console.ForegroundColor = ConsoleColor.White;
-                                Console.WriteLine("Ingrese la fila ");
-                                valido1 = int.TryParse(Console.ReadLine(), out fila);
-                                if (!valido1)
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Red;
-                                    Console.WriteLine("Error: solo se permiten numeros.");
-                                }
-                                else if (fila < 0 || fila > 7)
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Red;
-                                    Console.WriteLine("Error la fila debe estar entre 0 y 7.");
-                                    valido1 = false;
-                                }
-                            } while (!valido1);
-                            bool valido3;
-                            do
-                            {
-                                Console.ForegroundColor = ConsoleColor.White;
-                                Console.WriteLine("Ingrese la columna  ");
-                                valido3 = int.TryParse(Console.ReadLine(), out columna);
-                                if (!valido3)
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Red;
-                                    Console.WriteLine("Error: solo se permiten numeros.");
-                                }
-                                else if (columna < 0 || columna > 7)
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Red;
-                                    Console.WriteLine("Error la columna debe estar entre 0 y 7.");
-                                    valido3 = false;
-                                }
-                            } while (!valido3);
-
-                            break;
+                            Cords();
                         }
                         else
                         {
@@ -485,37 +430,43 @@ Ingrese una opción");
 
                         if (J1.Turno)
                         {
-                            if (opcion == 1)
+                            if (opcionPieza == 1)
                             {
-                                R1.MoverRey(fila, columna);
+                                R1.MoverRey(row, column);
                             }
-                            else if (opcion == 2)
+                            else if (opcionPieza == 2)
                             {
-                                T1.MoverTorre(fila, columna);
+                                T1.MoverTorre(row, column);
                             }
-                            else if (opcion == 3)
+                            else if (opcionPieza == 3)
                             {
-                                S1.MoverSoldado(fila, columna);
+                                S1.MoverSoldado(row, column);
                             }
-                            J1.CambiarTurno(J2);
+                            J1.CambiarTurno();
+                            Console.WriteLine(J1.Turno);
+                            J2.CambiarTurno();
+                            Console.WriteLine(J2.Turno);
                         }
                         else
                         {
-                            if (opcion == 1)
+                            if (opcionPieza == 1)
                             {
-                                R2.MoverRey(fila, columna);
+                                R2.MoverRey(row, column);
                             }
-                            else if (opcion == 2)
+                            else if (opcionPieza == 2)
                             {
-                                T2.MoverTorre(fila, columna);
+                                T3.MoverTorre(row, column);
                             }
-                            else if (opcion == 3)
+                            else if (opcionPieza == 3)
                             {
-                                S2.MoverSoldado(fila, columna);
+                                S8.MoverSoldado(row, column);
                             }
-                            J2.CambiarTurno(J1);
+                            J2.CambiarTurno();
+                            Console.WriteLine(J2.Turno);
+                            J1.CambiarTurno();
+                            Console.WriteLine(J1.Turno);
                         }
-
+                        Vertablero();
                         break;
 
 
