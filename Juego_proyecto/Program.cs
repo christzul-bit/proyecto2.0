@@ -92,6 +92,28 @@ namespace Juego_proyecto
                 Fila = f;
                 Columna = c;
             }
+            public bool ValidarSoldierJ1(int filaDestino, int columnaDestino)
+            {
+                if (filaDestino <= Fila || filaDestino > Fila + 1)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            public bool ValidarSoldierJ2(int filaDestino, int columnaDestino)
+            {
+                if (filaDestino >= Fila || filaDestino < Fila - 1)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
         }
 
         public class  Jugador
@@ -535,7 +557,6 @@ namespace Juego_proyecto
                                     if (R1.ValidarKing(filaDestino, columnaDestino) == true) { R1.MoverRey(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
-                                        Console.WriteLine("Movimiento invalido para el Rey.");
                                         Console.ForegroundColor = ConsoleColor.Red;
                                         Console.WriteLine("Movimiento invalido para el Rey. El Rey solo puede moverse una casilla en cualquier dirección.");
                                         seguro = false;
@@ -552,7 +573,6 @@ namespace Juego_proyecto
                                     if (R2.ValidarKing(filaDestino, columnaDestino) == true) { R2.MoverRey(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
-                                        Console.WriteLine("Movimiento invalido para el Rey.");
                                         Console.ForegroundColor = ConsoleColor.Red;
                                         Console.WriteLine("Movimiento invalido para el Rey. El Rey solo puede moverse una casilla en cualquier dirección.");
                                         seguro = false;
@@ -567,7 +587,6 @@ namespace Juego_proyecto
                                     if (T1.ValidarTower(filaDestino, columnaDestino) == true) { T1.MoverTorre(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
-                                        Console.WriteLine("Movimiento invalido para la Torre.");
                                         Console.ForegroundColor = ConsoleColor.Red;
                                         Console.WriteLine("Movimiento invalido para la Torre. La Torre solo puede moverse en línea recta.");
                                         seguro = false;
@@ -584,7 +603,6 @@ namespace Juego_proyecto
                                     if (T2.ValidarTower(filaDestino, columnaDestino) == true) { T2.MoverTorre(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
-                                        Console.WriteLine("Movimiento invalido para la Torre.");
                                         Console.ForegroundColor = ConsoleColor.Red;
                                         Console.WriteLine("Movimiento invalido para la Torre. La Torre solo puede moverse en línea recta.");
                                         seguro = false;
@@ -600,7 +618,6 @@ namespace Juego_proyecto
                                     if (T3.ValidarTower(filaDestino, columnaDestino) == true) { T3.MoverTorre(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
-                                        Console.WriteLine("Movimiento invalido para la Torre.");
                                         Console.ForegroundColor = ConsoleColor.Red;
                                         Console.WriteLine("Movimiento invalido para la Torre. La Torre solo puede moverse en línea recta.");
                                         seguro = false;
@@ -616,7 +633,6 @@ namespace Juego_proyecto
                                     if (T4.ValidarTower(filaDestino, columnaDestino) == true) { T4.MoverTorre(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
-                                        Console.WriteLine("Movimiento invalido para la Torre.");
                                         Console.ForegroundColor = ConsoleColor.Red;
                                         Console.WriteLine("Movimiento invalido para la Torre. La Torre solo puede moverse en línea recta.");
                                         seguro = false;
@@ -626,35 +642,123 @@ namespace Juego_proyecto
                             }
                             else if (piezaSeleccionada == S1)
                             {
-                                S1.MoverSoldado(filaDestino, columnaDestino);
+                                do
+                                {
+                                    Cords();
+                                    if (S1.ValidarSoldierJ1(filaDestino, columnaDestino) == true) { S1.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
+                                    else
+                                    {
+                                         Console.ForegroundColor = ConsoleColor.Red;
+                                        Console.WriteLine("Movimiento invalido para el Soldado. El Soldado solo puede moverse una casilla hacia adelante.");
+                                        seguro = false;
+                                    }
+
+                                } while (seguro == false);
                             }
                             else if (piezaSeleccionada == S2)
                             {
-                                S2.MoverSoldado(filaDestino, columnaDestino);
+                                do
+                                {
+                                    Cords();
+                                    if (S2.ValidarSoldierJ1(filaDestino, columnaDestino) == true) { S2.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
+                                    else
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Red;
+                                        Console.WriteLine("Movimiento invalido para el Soldado. El Soldado solo puede moverse una casilla hacia adelante.");
+                                        seguro = false;
+                                    }
+
+                                } while (seguro == false);
                             }
                             else if (piezaSeleccionada == S3)
                             {
-                                S3.MoverSoldado(filaDestino, columnaDestino);
+                                do
+                                {
+                                    Cords();
+                                    if (S3.ValidarSoldierJ1(filaDestino, columnaDestino) == true) { S3.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
+                                    else
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Red;
+                                        Console.WriteLine("Movimiento invalido para el Soldado. El Soldado solo puede moverse una casilla hacia adelante.");
+                                        seguro = false;
+                                    }
+
+                                } while (seguro == false);
                             }
                             else if (piezaSeleccionada == S4)
                             {
-                                S4.MoverSoldado(filaDestino, columnaDestino);
+                                do
+                                {
+                                    Cords();
+                                    if (S4.ValidarSoldierJ1(filaDestino, columnaDestino) == true) { S4.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
+                                    else
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Red;
+                                        Console.WriteLine("Movimiento invalido para el Soldado. El Soldado solo puede moverse una casilla hacia adelante.");
+                                        seguro = false;
+                                    }
+
+                                } while (seguro == false);
                             }
                             else if (piezaSeleccionada == S5)
                             {
-                                S5.MoverSoldado(filaDestino, columnaDestino);
+                                do
+                                {
+                                    Cords();
+                                    if (S5.ValidarSoldierJ2(filaDestino, columnaDestino) == true) { S5.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
+                                    else
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Red;
+                                        Console.WriteLine("Movimiento invalido para el Soldado. El Soldado solo puede moverse una casilla hacia adelante.");
+                                        seguro = false;
+                                    }
+
+                                } while (seguro == false);
                             }
                             else if (piezaSeleccionada == S6)
                             {
-                                S6.MoverSoldado(filaDestino, columnaDestino);
+                                do
+                                {
+                                    Cords();
+                                    if (S6.ValidarSoldierJ2(filaDestino, columnaDestino) == true) { S6.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
+                                    else
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Red;
+                                        Console.WriteLine("Movimiento invalido para el Soldado. El Soldado solo puede moverse una casilla hacia adelante.");
+                                        seguro = false;
+                                    }
+
+                                } while (seguro == false);
                             }
                             else if (piezaSeleccionada == S7)
                             {
-                                S7.MoverSoldado(filaDestino, columnaDestino);
+                                do
+                                {
+                                    Cords();
+                                    if (S7.ValidarSoldierJ2(filaDestino, columnaDestino) == true) { S7.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
+                                    else
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Red;
+                                        Console.WriteLine("Movimiento invalido para el Soldado. El Soldado solo puede moverse una casilla hacia adelante.");
+                                        seguro = false;
+                                    }
+
+                                } while (seguro == false);
                             }
                             else if (piezaSeleccionada == S8)
                             {
-                                S8.MoverSoldado(filaDestino, columnaDestino);
+                                do
+                                {
+                                    Cords();
+                                    if (S8.ValidarSoldierJ2(filaDestino, columnaDestino) == true) { S8.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
+                                    else
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Red;
+                                        Console.WriteLine("Movimiento invalido para el Soldado. El Soldado solo puede moverse una casilla hacia adelante.");
+                                        seguro = false;
+                                    }
+
+                                } while (seguro == false);
                             }
                             J1.CambiarTurno();
                             J2.CambiarTurno();
