@@ -238,47 +238,75 @@ namespace Juego_proyecto
             // procedimiento para mostrar el tablareo y jugadas
             void Vertablero()
             {
-                string[,] Table = { {"|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|"},
-                                {"|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|"},
-                                {"|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|"},
-                                {"|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|"},
-                                {"|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|"},
-                                {"|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|"},
-                                {"|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|"},
-                                {"|=|", "|-|", "|=|", "|-|", "|=|", "|-|", "|=|", "|-|"}};
-                R1.MostrarPosicion(Table);
-                R2.MostrarPosicion(Table);
-                T1.MostrarPosicion(Table);
-                T2.MostrarPosicion(Table);
-                T3.MostrarPosicion(Table);
-                T4.MostrarPosicion(Table);
-                S1.MostrarPosicion(Table);
-                S2.MostrarPosicion(Table);
-                S3.MostrarPosicion(Table);
-                S4.MostrarPosicion(Table);
-                S5.MostrarPosicion(Table);
-                S6.MostrarPosicion(Table);
-                S7.MostrarPosicion(Table);
-                S8.MostrarPosicion(Table);
+                string[,] Table =
+                {
+        { "   ", "   ", "   ", "   ", "   ", "   ", "   ", "   " },
+        { "   ", "   ", "   ", "   ", "   ", "   ", "   ", "   " },
+        { "   ", "   ", "   ", "   ", "   ", "   ", "   ", "   " },
+        { "   ", "   ", "   ", "   ", "   ", "   ", "   ", "   " },
+        { "   ", "   ", "   ", "   ", "   ", "   ", "   ", "   " },
+        { "   ", "   ", "   ", "   ", "   ", "   ", "   ", "   " },
+        { "   ", "   ", "   ", "   ", "   ", "   ", "   ", "   " },
+        { "   ", "   ", "   ", "   ", "   ", "   ", "   ", "   " }
+    };
+
+                Table[R1.Fila, R1.Columna] = "K1 ";
+                Table[R2.Fila, R2.Columna] = "K2 ";
+
+                Table[T1.Fila, T1.Columna] = "T1 ";
+                Table[T2.Fila, T2.Columna] = "T2 ";
+                Table[T3.Fila, T3.Columna] = "T3 ";
+                Table[T4.Fila, T4.Columna] = "T4 ";
+
+                Table[S1.Fila, S1.Columna] = "S1 ";
+                Table[S2.Fila, S2.Columna] = "S2 ";
+                Table[S3.Fila, S3.Columna] = "S3 ";
+                Table[S4.Fila, S4.Columna] = "S4 ";
+
+                Table[S5.Fila, S5.Columna] = "S5 ";
+                Table[S6.Fila, S6.Columna] = "S6 ";
+                Table[S7.Fila, S7.Columna] = "S7 ";
+                Table[S8.Fila, S8.Columna] = "S8 ";
+
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write("     ");
+
                 for (int i = 0; i < 8; i++)
                 {
+                    Console.Write($"{i}   ");
+                }
+                Console.WriteLine();
+                for (int i = 0; i < 8; i++)
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.Write($" {i}  ");
+
                     for (int j = 0; j < 8; j++)
                     {
-                        if (Table[i, j] == "|-|" || Table[i, j] == "|=|")
+                        Console.ForegroundColor = ConsoleColor.DarkCyan;
+                        Console.Write("|");
+                        if (Table[i, j].Trim() == "")
                         {
-
-                            Console.ForegroundColor = ConsoleColor.DarkCyan;
-                            Console.Write($"{Table[i, j]} ");
+                            Console.Write("   ");
                         }
                         else
                         {
-
-                            Console.ForegroundColor = ConsoleColor.DarkRed;
-                            Console.Write($"{Table[i, j]} ");
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write(Table[i, j]);
                         }
                     }
+
+                    Console.ForegroundColor = ConsoleColor.DarkCyan;
+                    Console.Write("|");
                     Console.WriteLine();
                 }
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write("     ");
+                for (int i = 0; i < 8; i++)
+                {
+                    Console.Write($"{i}   ");
+                }
+                Console.WriteLine();
             }
             // procedimiento para ingresar las coord
             void Cords()
@@ -366,108 +394,161 @@ namespace Juego_proyecto
                 switch (opcion)
                 {
                     case 1:
-                        Console.ForegroundColor = ConsoleColor.DarkCyan;
-                        Vertablero();
-                        
-                        if (J1.Turno)
+                        bool seguir = true;
+                        while (seguir)
                         {
-                            Console.ForegroundColor = ConsoleColor.DarkBlue;
-                            J1.MostrarTurno();
-                        }
-                        else
-                        {
-                            Console.ForegroundColor = ConsoleColor.DarkGreen;
-                            J2.MostrarTurno();
-                        }
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            Vertablero();
 
-                        do
-                        {
-                            try
+                            if (J1.Turno)
                             {
-                                Console.WriteLine(@"Seleccione pieza:
-1. Rey
-2. Torre
-3. Soldado
-Ingrese una opción");
-                                opcionPieza = int.Parse(Console.ReadLine());
-                                correcto4 = true;
+                                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                                J1.MostrarTurno();
                             }
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                J2.MostrarTurno();
+                            }
+                            // cambie esto para pedir fila y columna para buscar la pieza y despes mover la pieza
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine("Ingrese fila de origen:");
+                            Cords();
 
-                            catch (Exception ex)
+                            int filaOrigen = row;
+                            int columnaOrigen = column;
+                            Pieza piezaSeleccionada = null;
+
+                            if (R1.Fila == filaOrigen && R1.Columna == columnaOrigen)
+                            {
+                                piezaSeleccionada = R1;
+                            }
+                            else if (R2.Fila == filaOrigen && R2.Columna == columnaOrigen)
+                            {
+                                piezaSeleccionada = R2;
+                            }
+                            else if (T1.Fila == filaOrigen && T1.Columna == columnaOrigen)
+                            {
+                                piezaSeleccionada = T1;
+                            }
+                            else if (T2.Fila == filaOrigen && T2.Columna == columnaOrigen)
+                            {
+                                piezaSeleccionada = T2;
+                            }
+                            else if (T3.Fila == filaOrigen && T3.Columna == columnaOrigen)
+                            {
+                                piezaSeleccionada = T3;
+                            }
+                            else if (T4.Fila == filaOrigen && T4.Columna == columnaOrigen)
+                            {
+                                piezaSeleccionada = T4;
+                            }
+                            else if (S1.Fila == filaOrigen && S1.Columna == columnaOrigen)
+                            {
+                                piezaSeleccionada = S1;
+                            }
+                            else if (S2.Fila == filaOrigen && S2.Columna == columnaOrigen)
+                            {
+                                piezaSeleccionada = S2;
+                            }
+                            else if (S3.Fila == filaOrigen && S3.Columna == columnaOrigen)
+                            {
+                                piezaSeleccionada = S3;
+                            }
+                            else if (S4.Fila == filaOrigen && S4.Columna == columnaOrigen)
+                            {
+                                piezaSeleccionada = S4;
+                            }
+                            else if (S5.Fila == filaOrigen && S5.Columna == columnaOrigen)
+                            {
+                                piezaSeleccionada = S5;
+                            }
+                            else if (S6.Fila == filaOrigen && S6.Columna == columnaOrigen)
+                            {
+                                piezaSeleccionada = S6;
+                            }
+                            else if (S7.Fila == filaOrigen && S7.Columna == columnaOrigen)
+                            {
+                                piezaSeleccionada = S7;
+                            }
+                            else if (S8.Fila == filaOrigen && S8.Columna == columnaOrigen)
+                            {
+                                piezaSeleccionada = S8;
+                            }
+                            if (piezaSeleccionada == null)
                             {
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("Error: opción inválida.");
-                                Console.WriteLine(ex.Message);
-                                correcto4 = false;
-                                Console.ResetColor();
+                                Console.WriteLine("No hay ninguna pieza en esa posición.");
+                                Console.ReadKey();
+                                continue;
                             }
-                        } while (!correcto4);
-                        if (opcionPieza == 1)
-                        {
-                            Console.WriteLine("Seleccionaste Rey");
-                            Console.WriteLine("Ingrese coordenadas ");
-                            Cords();
-                        }
-                        else if (opcionPieza == 2)
-                        {
-                            Console.WriteLine("Seleccionaste Torre");
-                           
-                            Console.WriteLine("Ingrese coordenadas ");
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine("Ingrese coordenadas para mover la pieza:");
                             Cords();
 
-                        }
-                        else if (opcionPieza == 3)
-                        {
-                            Console.WriteLine("Seleccionaste Soldado");
-                            Console.WriteLine("Ingrese coordenadas ");
-                            Cords();
-                        }
-                        else
-                        {
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("Opción inválida.");
-                        }
-
-                        if (J1.Turno)
-                        {
-                            if (opcionPieza == 1)
+                            int filaDestino = row;
+                            int columnaDestino = column;
+                            if (piezaSeleccionada == R1)
                             {
-                                R1.MoverRey(row, column);
+                                R1.MoverRey(filaDestino, columnaDestino);
                             }
-                            else if (opcionPieza == 2)
+                            else if (piezaSeleccionada == R2)
                             {
-                                T1.MoverTorre(row, column);
+                                R2.MoverRey(filaDestino, columnaDestino);
                             }
-                            else if (opcionPieza == 3)
+                            else if (piezaSeleccionada == T1)
                             {
-                                S1.MoverSoldado(row, column);
+                                T1.MoverTorre(filaDestino, columnaDestino);
+                            }
+                            else if (piezaSeleccionada == T2)
+                            {
+                                T2.MoverTorre(filaDestino, columnaDestino);
+                            }
+                            else if (piezaSeleccionada == T3)
+                            {
+                                T3.MoverTorre(filaDestino, columnaDestino);
+                            }
+                            else if (piezaSeleccionada == T4)
+                            {
+                                T4.MoverTorre(filaDestino, columnaDestino);
+                            }
+                            else if (piezaSeleccionada == S1)
+                            {
+                                S1.MoverSoldado(filaDestino, columnaDestino);
+                            }
+                            else if (piezaSeleccionada == S2)
+                            {
+                                S2.MoverSoldado(filaDestino, columnaDestino);
+                            }
+                            else if (piezaSeleccionada == S3)
+                            {
+                                S3.MoverSoldado(filaDestino, columnaDestino);
+                            }
+                            else if (piezaSeleccionada == S4)
+                            {
+                                S4.MoverSoldado(filaDestino, columnaDestino);
+                            }
+                            else if (piezaSeleccionada == S5)
+                            {
+                                S5.MoverSoldado(filaDestino, columnaDestino);
+                            }
+                            else if (piezaSeleccionada == S6)
+                            {
+                                S6.MoverSoldado(filaDestino, columnaDestino);
+                            }
+                            else if (piezaSeleccionada == S7)
+                            {
+                                S7.MoverSoldado(filaDestino, columnaDestino);
+                            }
+                            else if (piezaSeleccionada == S8)
+                            {
+                                S8.MoverSoldado(filaDestino, columnaDestino);
                             }
                             J1.CambiarTurno();
-                            Console.WriteLine(J1.Turno);
                             J2.CambiarTurno();
-                            Console.WriteLine(J2.Turno);
-                        }
-                        else
-                        {
-                            if (opcionPieza == 1)
-                            {
-                                R2.MoverRey(row, column);
-                            }
-                            else if (opcionPieza == 2)
-                            {
-                                T3.MoverTorre(row, column);
-                            }
-                            else if (opcionPieza == 3)
-                            {
-                                S8.MoverSoldado(row, column);
-                            }
-                            J2.CambiarTurno();
-                            Console.WriteLine(J2.Turno);
-                            J1.CambiarTurno();
-                            Console.WriteLine(J1.Turno);
-                        }
-                        Vertablero();
-                        break;
+                        }break;
+                        
 
 
                     case 2:
