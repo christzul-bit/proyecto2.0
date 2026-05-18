@@ -64,6 +64,19 @@ namespace Juego_proyecto
                 Fila = f;
                 Columna = c;
             }
+
+            public bool ValidarTower(int filaDestino, int columnaDestino)
+            {
+                if (filaDestino != Fila && columnaDestino != Columna)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+
         }
 
         public class Soldier : Pieza
@@ -511,7 +524,7 @@ namespace Juego_proyecto
                                 Console.ReadKey();
                                 continue;
                             }
-                            
+
 
                             if (piezaSeleccionada == R1)
 
@@ -519,7 +532,7 @@ namespace Juego_proyecto
                                 do
                                 {
                                     Cords();
-                                    if (R1.ValidarKing(filaDestino, columnaDestino) == true) { R1.MoverRey(filaDestino, columnaDestino);  seguro = true; }
+                                    if (R1.ValidarKing(filaDestino, columnaDestino) == true) { R1.MoverRey(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
                                         Console.WriteLine("Movimiento invalido para el Rey.");
@@ -533,24 +546,83 @@ namespace Juego_proyecto
                             }
                             else if (piezaSeleccionada == R2)
                             {
-                                R2.MoverRey(filaDestino, columnaDestino);
-                                R2.ValidarKing(filaDestino, columnaDestino);
+                                do
+                                {
+                                    Cords();
+                                    if (R2.ValidarKing(filaDestino, columnaDestino) == true) { R2.MoverRey(filaDestino, columnaDestino); seguro = true; }
+                                    else
+                                    {
+                                        Console.WriteLine("Movimiento invalido para el Rey.");
+                                        Console.ForegroundColor = ConsoleColor.Red;
+                                        Console.WriteLine("Movimiento invalido para el Rey. El Rey solo puede moverse una casilla en cualquier dirección.");
+                                        seguro = false;
+                                    }
+                                } while (seguro == false);
                             }
                             else if (piezaSeleccionada == T1)
                             {
-                                T1.MoverTorre(filaDestino, columnaDestino);
-                            }
+                                do
+                                {
+                                    Cords();
+                                    if (T1.ValidarTower(filaDestino, columnaDestino) == true) { T1.MoverTorre(filaDestino, columnaDestino); seguro = true; }
+                                    else
+                                    {
+                                        Console.WriteLine("Movimiento invalido para la Torre.");
+                                        Console.ForegroundColor = ConsoleColor.Red;
+                                        Console.WriteLine("Movimiento invalido para la Torre. La Torre solo puede moverse en línea recta.");
+                                        seguro = false;
+                                    }
+
+                                } while (seguro == false); }
+
+
                             else if (piezaSeleccionada == T2)
                             {
-                                T2.MoverTorre(filaDestino, columnaDestino);
+                                do
+                                {
+                                    Cords();
+                                    if (T2.ValidarTower(filaDestino, columnaDestino) == true) { T2.MoverTorre(filaDestino, columnaDestino); seguro = true; }
+                                    else
+                                    {
+                                        Console.WriteLine("Movimiento invalido para la Torre.");
+                                        Console.ForegroundColor = ConsoleColor.Red;
+                                        Console.WriteLine("Movimiento invalido para la Torre. La Torre solo puede moverse en línea recta.");
+                                        seguro = false;
+                                    }
+
+                                } while (seguro == false);
                             }
                             else if (piezaSeleccionada == T3)
                             {
-                                T3.MoverTorre(filaDestino, columnaDestino);
+                                do
+                                {
+                                    Cords();
+                                    if (T3.ValidarTower(filaDestino, columnaDestino) == true) { T3.MoverTorre(filaDestino, columnaDestino); seguro = true; }
+                                    else
+                                    {
+                                        Console.WriteLine("Movimiento invalido para la Torre.");
+                                        Console.ForegroundColor = ConsoleColor.Red;
+                                        Console.WriteLine("Movimiento invalido para la Torre. La Torre solo puede moverse en línea recta.");
+                                        seguro = false;
+                                    }
+
+                                } while (seguro == false);
                             }
                             else if (piezaSeleccionada == T4)
                             {
-                                T4.MoverTorre(filaDestino, columnaDestino);
+                                do
+                                {
+                                    Cords();
+                                    if (T4.ValidarTower(filaDestino, columnaDestino) == true) { T4.MoverTorre(filaDestino, columnaDestino); seguro = true; }
+                                    else
+                                    {
+                                        Console.WriteLine("Movimiento invalido para la Torre.");
+                                        Console.ForegroundColor = ConsoleColor.Red;
+                                        Console.WriteLine("Movimiento invalido para la Torre. La Torre solo puede moverse en línea recta.");
+                                        seguro = false;
+                                    }
+
+                                } while (seguro == false) ;
                             }
                             else if (piezaSeleccionada == S1)
                             {
