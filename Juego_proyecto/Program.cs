@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,6 +34,18 @@ namespace Juego_proyecto
             {
                 Fila = f;
                 Columna = c;
+            }
+
+            public bool ValidarKing( int filaDestino, int columnaDestino)
+            {
+                if (filaDestino < Fila - 1 || filaDestino > Fila + 1 || columnaDestino < Columna - 1 || columnaDestino > Columna + 1)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
             }
         }
 
@@ -196,6 +209,8 @@ namespace Juego_proyecto
             bool seguro, valido;
             string password;
             int cantidad, opcion = 0, column = 0, row =0;
+            int filaDestino = 0;
+            int columnaDestino = 0;
             // procedimiento para cambiar las teclas por *
             void IngresarPssw()
             {
@@ -311,6 +326,10 @@ namespace Juego_proyecto
             // procedimiento para ingresar las coord
             void Cords()
             {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Ingrese coordenadas para mover la pieza:");
+               
+                
                 bool valido1;
                 do
                 {
@@ -347,10 +366,11 @@ namespace Juego_proyecto
                         valido3 = false;
                     }
                 } while (!valido3);
+                filaDestino = row;
+                columnaDestino = column;
             }
             //login de inicio
-           bool correcto = false;
-            bool correcto4 = false;
+        
             do
             {
                 Console.ForegroundColor = ConsoleColor.Blue;
@@ -374,7 +394,7 @@ namespace Juego_proyecto
                     seguro = false;
                 }
             } while (seguro == false);
-            int fila=0, columna=0, opcionPieza = 0;
+          
             do
             {
                 do
@@ -419,83 +439,102 @@ namespace Juego_proyecto
                             int filaOrigen = row;
                             int columnaOrigen = column;
                             Pieza piezaSeleccionada = null;
+                            if (J1.Turno == true)
+                            {
+                                if (R1.Fila == filaOrigen && R1.Columna == columnaOrigen)
+                                {
+                                    piezaSeleccionada = R1;
+                                }
+                                else if (T1.Fila == filaOrigen && T1.Columna == columnaOrigen)
+                                {
+                                    piezaSeleccionada = T1;
+                                }
+                                else if (T2.Fila == filaOrigen && T2.Columna == columnaOrigen)
+                                {
+                                    piezaSeleccionada = T2;
+                                }
+                                else if (S1.Fila == filaOrigen && S1.Columna == columnaOrigen)
+                                {
+                                    piezaSeleccionada = S1;
+                                }
+                                else if (S2.Fila == filaOrigen && S2.Columna == columnaOrigen)
+                                {
+                                    piezaSeleccionada = S2;
+                                }
+                                else if (S3.Fila == filaOrigen && S3.Columna == columnaOrigen)
+                                {
+                                    piezaSeleccionada = S3;
+                                }
+                                else if (S4.Fila == filaOrigen && S4.Columna == columnaOrigen)
+                                {
+                                    piezaSeleccionada = S4;
+                                }
+                            }
+                            else if (J2.Turno == true){
+                            
 
-                            if (R1.Fila == filaOrigen && R1.Columna == columnaOrigen)
-                            {
-                                piezaSeleccionada = R1;
-                            }
-                            else if (R2.Fila == filaOrigen && R2.Columna == columnaOrigen)
-                            {
-                                piezaSeleccionada = R2;
-                            }
-                            else if (T1.Fila == filaOrigen && T1.Columna == columnaOrigen)
-                            {
-                                piezaSeleccionada = T1;
-                            }
-                            else if (T2.Fila == filaOrigen && T2.Columna == columnaOrigen)
-                            {
-                                piezaSeleccionada = T2;
-                            }
-                            else if (T3.Fila == filaOrigen && T3.Columna == columnaOrigen)
-                            {
-                                piezaSeleccionada = T3;
-                            }
-                            else if (T4.Fila == filaOrigen && T4.Columna == columnaOrigen)
-                            {
-                                piezaSeleccionada = T4;
-                            }
-                            else if (S1.Fila == filaOrigen && S1.Columna == columnaOrigen)
-                            {
-                                piezaSeleccionada = S1;
-                            }
-                            else if (S2.Fila == filaOrigen && S2.Columna == columnaOrigen)
-                            {
-                                piezaSeleccionada = S2;
-                            }
-                            else if (S3.Fila == filaOrigen && S3.Columna == columnaOrigen)
-                            {
-                                piezaSeleccionada = S3;
-                            }
-                            else if (S4.Fila == filaOrigen && S4.Columna == columnaOrigen)
-                            {
-                                piezaSeleccionada = S4;
-                            }
-                            else if (S5.Fila == filaOrigen && S5.Columna == columnaOrigen)
-                            {
-                                piezaSeleccionada = S5;
-                            }
-                            else if (S6.Fila == filaOrigen && S6.Columna == columnaOrigen)
-                            {
-                                piezaSeleccionada = S6;
-                            }
-                            else if (S7.Fila == filaOrigen && S7.Columna == columnaOrigen)
-                            {
-                                piezaSeleccionada = S7;
-                            }
-                            else if (S8.Fila == filaOrigen && S8.Columna == columnaOrigen)
-                            {
-                                piezaSeleccionada = S8;
+                                if (R2.Fila == filaOrigen && R2.Columna == columnaOrigen)
+                                {
+                                    piezaSeleccionada = R2;
+                                }
+
+                                else if (T3.Fila == filaOrigen && T3.Columna == columnaOrigen)
+                                {
+                                    piezaSeleccionada = T3;
+                                }
+                                else if (T4.Fila == filaOrigen && T4.Columna == columnaOrigen)
+                                {
+                                    piezaSeleccionada = T4;
+                                }
+
+                                else if (S5.Fila == filaOrigen && S5.Columna == columnaOrigen)
+                                {
+                                    piezaSeleccionada = S5;
+                                }
+                                else if (S6.Fila == filaOrigen && S6.Columna == columnaOrigen)
+                                {
+                                    piezaSeleccionada = S6;
+                                }
+                                else if (S7.Fila == filaOrigen && S7.Columna == columnaOrigen)
+                                {
+                                    piezaSeleccionada = S7;
+                                }
+                                else if (S8.Fila == filaOrigen && S8.Columna == columnaOrigen)
+                                {
+                                    piezaSeleccionada = S8;
+                                }
                             }
                             if (piezaSeleccionada == null)
                             {
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("No hay ninguna pieza en esa posición.");
+                                Console.WriteLine("No hay ninguna pieza en esa posición, o selecciona la pieza del rival.");
                                 Console.ReadKey();
                                 continue;
                             }
-                            Console.ForegroundColor = ConsoleColor.Yellow;
-                            Console.WriteLine("Ingrese coordenadas para mover la pieza:");
-                            Cords();
+                            
 
-                            int filaDestino = row;
-                            int columnaDestino = column;
                             if (piezaSeleccionada == R1)
+
                             {
-                                R1.MoverRey(filaDestino, columnaDestino);
+                                do
+                                {
+                                    Cords();
+                                    if (R1.ValidarKing(filaDestino, columnaDestino) == true) { R1.MoverRey(filaDestino, columnaDestino);  seguro = true; }
+                                    else
+                                    {
+                                        Console.WriteLine("Movimiento invalido para el Rey.");
+                                        Console.ForegroundColor = ConsoleColor.Red;
+                                        Console.WriteLine("Movimiento invalido para el Rey. El Rey solo puede moverse una casilla en cualquier dirección.");
+                                        seguro = false;
+                                    }
+                                } while (seguro == false);
+
+
                             }
                             else if (piezaSeleccionada == R2)
                             {
                                 R2.MoverRey(filaDestino, columnaDestino);
+                                R2.ValidarKing(filaDestino, columnaDestino);
                             }
                             else if (piezaSeleccionada == T1)
                             {
