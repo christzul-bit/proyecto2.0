@@ -15,10 +15,7 @@ namespace Juego_proyecto
             public int Columna;
             public bool Juega;
 
-            public void DoblePosicion(string[,] tablero)
-            {
-                
-            }
+           
         }
         public class King : Pieza
         {
@@ -236,6 +233,7 @@ namespace Juego_proyecto
             S8.Color = "Green";
             S8.Fila = 6;
             S8.Columna = 5;
+            
 
             Jugador J1 = new Jugador ("Jugador 1", true);
             Jugador J2 = new Jugador("Jugador 2", false);
@@ -246,6 +244,8 @@ namespace Juego_proyecto
             int cantidad, opcion = 0, column = 0, row =0;
             int filaDestino = 0;
             int columnaDestino = 0;
+
+            
             // procedimiento para cambiar las teclas por *
             void IngresarPssw()
             {
@@ -401,8 +401,21 @@ namespace Juego_proyecto
                         valido3 = false;
                     }
                 } while (!valido3);
+                
                 filaDestino = row;
                 columnaDestino = column;
+            }
+            // procediminento que verifica si hay dos piezas en la misma posicion
+            bool Dobleposicion(int r, int c, string[,] tablero)
+            {
+                if (tablero[r, c] != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             //login de inicio
         
