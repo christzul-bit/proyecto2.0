@@ -15,6 +15,14 @@ namespace Juego_proyecto
             public int Columna;
             public bool Juega;
 
+            public void Muerto()
+            {
+                if(Juega == false)
+                {
+                    Fila = -1;
+                    Columna = -1;
+                }
+            }
            
         }
         public class King : Pieza
@@ -296,24 +304,62 @@ namespace Juego_proyecto
                         Table[i, j] = "   ";
                     }
                 }
-
-                Table[R1.Fila, R1.Columna] = "K1 ";
-                Table[R2.Fila, R2.Columna] = "K2 ";
-
-                Table[T1.Fila, T1.Columna] = "T1 ";
-                Table[T2.Fila, T2.Columna] = "T2 ";
-                Table[T3.Fila, T3.Columna] = "T3 ";
-                Table[T4.Fila, T4.Columna] = "T4 ";
-
-                Table[S1.Fila, S1.Columna] = "S1 ";
-                Table[S2.Fila, S2.Columna] = "S2 ";
-                Table[S3.Fila, S3.Columna] = "S3 ";
-                Table[S4.Fila, S4.Columna] = "S4 ";
-
-                Table[S5.Fila, S5.Columna] = "S5 ";
-                Table[S6.Fila, S6.Columna] = "S6 ";
-                Table[S7.Fila, S7.Columna] = "S7 ";
-                Table[S8.Fila, S8.Columna] = "S8 ";
+                if (R1.Juega == true)
+                {
+                    Table[R1.Fila, R1.Columna] = "K1 ";
+                }
+                if (R2.Juega == true)
+                {
+                    Table[R2.Fila, R2.Columna] = "K2 ";
+                }
+                if (T1.Juega == true)
+                {
+                    Table[T1.Fila, T1.Columna] = "T1 ";
+                }
+                if (T2.Juega == true)
+                {
+                    Table[T2.Fila, T2.Columna] = "T2 ";
+                }
+                if (T3.Juega == true)
+                {
+                    Table[T3.Fila, T3.Columna] = "T3 ";
+                }
+                if (T4.Juega == true)
+                {
+                    Table[T4.Fila, T4.Columna] = "T4 ";
+                }
+                if (S1.Juega == true)
+                {
+                    Table[S1.Fila, S1.Columna] = "S1 ";
+                }
+                if (S2.Juega == true)
+                {
+                    Table[S2.Fila, S2.Columna] = "S2 ";
+                }
+                if (S3.Juega == true)
+                {
+                    Table[S3.Fila, S3.Columna] = "S3 ";
+                }
+                if (S4.Juega == true)
+                {
+                    Table[S4.Fila, S4.Columna] = "S4 ";
+                }
+                if (S5.Juega == true)
+                {
+                    Table[S5.Fila, S5.Columna] = "S5 ";
+                }
+                if (S6.Juega == true)
+                {
+                    Table[S6.Fila, S6.Columna] = "S6 ";
+                }
+                if (S7.Juega == true)
+                {
+                    Table[S7.Fila, S7.Columna] = "S7 ";
+                }
+                if (S8.Juega == true)
+                {
+                    Table[S8.Fila, S8.Columna] = "S8 ";
+                }
 
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write("     ");
@@ -414,8 +460,84 @@ namespace Juego_proyecto
                     return false;
                 }
             }
+            // procedimientos que comparan si se captura una piza -- sin contar al peon
+            void CapturarJ1(int r, int c)
+            {
+                if(r == R2.Fila && c == R2.Columna)
+                {
+                    R2.Juega = false;
+                    R2.Muerto();
+                }else if(r == T3.Fila && c == T3.Columna)
+                {
+                    T3.Juega = false;
+                    T3.Muerto();
+                }
+                else if (r == T4.Fila && c == T4.Columna)
+                {
+                    T4.Juega = false;
+                    T4.Muerto();
+                }
+                else if (r == S5.Fila && c == S5.Columna)
+                {
+                    S5.Juega = false;
+                    S5.Muerto();
+                }
+                else if (r == S6.Fila && c == S6.Columna)
+                {
+                    S6.Juega = false;
+                    S6.Muerto();
+                }
+                else if (r == S7.Fila && c == S7.Columna)
+                {
+                    S7.Juega = false;
+                    S8.Muerto();
+                }
+                else if (r == S8.Fila && c == S8.Columna)
+                {
+                    S8.Juega = false;
+                    S8.Muerto();
+                }
+            }
+            void CapturarJ2(int r, int c)
+            {
+                if (r == R1.Fila && c == R1.Columna)
+                {
+                    R1.Juega = false;
+                    R1.Muerto();
+                }
+                else if (r == T1.Fila && c == T1.Columna)
+                {
+                    T1.Juega = false;
+                    T1.Muerto();
+                }
+                else if (r == T2.Fila && c == T2.Columna)
+                {
+                    T2.Juega = false;
+                    T2.Muerto();
+                }
+                else if (r == S1.Fila && c == S1.Columna)
+                {
+                    S1.Juega = false;
+                    S1.Muerto();
+                }
+                else if (r == S2.Fila && c == S2.Columna)
+                {
+                    S2.Juega = false;
+                    S2.Muerto();
+                }
+                else if (r == S3.Fila && c == S3.Columna)
+                {
+                    S3.Juega = false;
+                    S3.Muerto();
+                }
+                else if (r == S4.Fila && c == S4.Columna)
+                {
+                    S4.Juega = false;
+                    S4.Muerto();
+                }
+            }
             //login de inicio
-        
+
             do
             {
                 Console.ForegroundColor = ConsoleColor.Blue;
@@ -598,7 +720,7 @@ namespace Juego_proyecto
                                         seguro = false;
                                     }
                                 } while (seguro == false);
-
+                                CapturarJ1(filaDestino, columnaDestino);
 
                             }
                             else if (piezaSeleccionada == R2)
@@ -640,6 +762,7 @@ namespace Juego_proyecto
                                         seguro = false;
                                     }
                                 } while (seguro == false);
+                                CapturarJ2(filaDestino, columnaDestino);
                             }
                             else if (piezaSeleccionada == T1)
                             {
@@ -680,7 +803,9 @@ namespace Juego_proyecto
                                         seguro = false;
                                     }
 
-                                } while (seguro == false); }
+                                } while (seguro == false);
+                                CapturarJ1(filaDestino, columnaDestino);
+                            }
 
 
                             else if (piezaSeleccionada == T2)
@@ -723,6 +848,7 @@ namespace Juego_proyecto
                                     }
 
                                 } while (seguro == false);
+                                CapturarJ1(filaDestino, columnaDestino);
                             }
                             else if (piezaSeleccionada == T3)
                             {
@@ -764,6 +890,7 @@ namespace Juego_proyecto
                                     }
 
                                 } while (seguro == false);
+                                CapturarJ2(filaDestino, columnaDestino);
                             }
                             else if (piezaSeleccionada == T4)
                             {
@@ -805,6 +932,7 @@ namespace Juego_proyecto
                                     }
 
                                 } while (seguro == false) ;
+                                CapturarJ2(filaDestino, columnaDestino);
                             }
                             else if (piezaSeleccionada == S1)
                             {
@@ -846,6 +974,7 @@ namespace Juego_proyecto
                                     }
 
                                 } while (seguro == false);
+                                CapturarJ1(filaDestino, columnaDestino);
                             }
                             else if (piezaSeleccionada == S2)
                             {
@@ -887,6 +1016,7 @@ namespace Juego_proyecto
                                     }
 
                                 } while (seguro == false);
+                                CapturarJ1(filaDestino, columnaDestino);
                             }
                             else if (piezaSeleccionada == S3)
                             {
@@ -928,6 +1058,7 @@ namespace Juego_proyecto
                                     }
 
                                 } while (seguro == false);
+                                CapturarJ1(filaDestino, columnaDestino);
                             }
                             else if (piezaSeleccionada == S4)
                             {
@@ -969,6 +1100,7 @@ namespace Juego_proyecto
                                     }
 
                                 } while (seguro == false);
+                                CapturarJ1(filaDestino, columnaDestino);
                             }
                             else if (piezaSeleccionada == S5)
                             {
@@ -1010,6 +1142,7 @@ namespace Juego_proyecto
                                     }
 
                                 } while (seguro == false);
+                                CapturarJ2(filaDestino, columnaDestino);
                             }
                             else if (piezaSeleccionada == S6)
                             {
@@ -1051,6 +1184,7 @@ namespace Juego_proyecto
                                     }
 
                                 } while (seguro == false);
+                                CapturarJ2(filaDestino, columnaDestino);
                             }
                             else if (piezaSeleccionada == S7)
                             {
@@ -1092,6 +1226,7 @@ namespace Juego_proyecto
                                     }
 
                                 } while (seguro == false);
+                                CapturarJ2(filaDestino, columnaDestino);
                             }
                             else if (piezaSeleccionada == S8)
                             {
@@ -1133,6 +1268,20 @@ namespace Juego_proyecto
                                     }
 
                                 } while (seguro == false);
+                                CapturarJ2(filaDestino, columnaDestino);
+                            }
+                            if(R1.Juega == false)
+                            {
+                                Vertablero();
+                                seguir = false;
+                                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                Console.WriteLine("Jugador 2 Gana!!!");
+                            }else if(R2.Juega == false)
+                            {
+                                Vertablero();
+                                seguir = false;
+                                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                Console.WriteLine("Jugador 1 Gana!!!");
                             }
                             J1.CambiarTurno();
                             J2.CambiarTurno();
