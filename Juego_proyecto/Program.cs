@@ -603,6 +603,95 @@ namespace Juego_proyecto
                     S4.Muerto();
                 }
             }
+            // PORCEDIMINETO PARA reiniciar
+            void Reinicio()
+            {
+                
+                R1.Juega = true;
+                R1.Color = "Red";
+                R1.Fila = 0;
+                R1.Columna = 4;
+
+                
+                R2.Juega = true;
+                R2.Color = "Green";
+                R2.Fila = 7;
+                R2.Columna = 3;
+
+                
+                T1.Juega = true;
+                T1.Color = "Red";
+                T1.Fila = 0;
+                T1.Columna = 2;
+
+                
+                T2.Juega = true;
+                T2.Color = "Red";
+                T2.Fila = 0;
+                T2.Columna = 5;
+
+                
+                T3.Juega = true;
+                T3.Color = "Green";
+                T3.Fila = 7;
+                T3.Columna = 2;
+
+                
+                T4.Juega = true;
+                T4.Color = "Green";
+                T4.Fila = 7;
+                T4.Columna = 5;
+
+                
+                S1.Juega = true;
+                S1.Color = "Red";
+                S1.Fila = 1;
+                S1.Columna = 2;
+
+                
+                S2.Juega = true;
+                S2.Color = "Red";
+                S2.Fila = 1;
+                S2.Columna = 3;
+
+                S3.Juega = true;
+                S3.Color = "Red";
+                S3.Fila = 1;
+                S3.Columna = 4;
+
+                
+                S4.Juega = true;
+                S4.Color = "Red";
+                S4.Fila = 1;
+                S4.Columna = 5;
+
+                
+                S5.Juega = true;
+                S5.Color = "Green";
+                S5.Fila = 6;
+                S5.Columna = 2;
+
+                
+                S6.Juega = true;
+                S6.Color = "Green";
+                S6.Fila = 6;
+                S6.Columna = 3;
+
+                
+                S7.Juega = true;
+                S7.Color = "Green";
+                S7.Fila = 6;
+                S7.Columna = 4;
+
+                
+                S8.Juega = true;
+                S8.Color = "Green";
+                S8.Fila = 6;
+                S8.Columna = 5;
+
+                J1.Turno = true;
+                J2.Turno = false;
+            }
 
             Pieza ObtenerPiezaEn(int f, int c)
             {
@@ -671,6 +760,7 @@ namespace Juego_proyecto
                 {
                     case 1:
                         bool seguir = true;
+                        Reinicio();
                         while (seguir)
                         {
                             Console.Clear();
@@ -1391,7 +1481,7 @@ namespace Juego_proyecto
                                             seguro = true;
                                         }
                                     } while (seguro == false);
-                                    if (S5.ValidarSoldierJ2(filaDestino, columnaDestino, Table) == true) { S8.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
+                                    if (S8.ValidarSoldierJ2(filaDestino, columnaDestino, Table) == true) { S8.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
                                         Console.ForegroundColor = ConsoleColor.Red;
