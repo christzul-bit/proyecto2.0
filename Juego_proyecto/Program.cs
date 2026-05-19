@@ -14,6 +14,7 @@ namespace Juego_proyecto
             public int Fila;
             public int Columna;
             public bool Juega;
+            public string Color;
 
             public void Muerto()
             {
@@ -28,8 +29,7 @@ namespace Juego_proyecto
         public class King : Pieza
         {
             public string Figura => "|K|";
-            public string Color;
-
+           
 
             public void MostrarPosicion(string[,] tablero)
             {
@@ -57,7 +57,6 @@ namespace Juego_proyecto
         public class Tower : Pieza
         {
             public string Figura => "|T|";
-            public string Color;
 
             public void MostrarPosicion(string[,] tablero)
             {
@@ -70,24 +69,67 @@ namespace Juego_proyecto
                 Columna = c;
             }
 
-            public bool ValidarTower(int filaDestino, int columnaDestino)
+            public bool ValidarTower(int filaDestino, int columnaDestino, string[,] tablero)
             {
+                // Validar que sea recto
                 if (filaDestino != Fila && columnaDestino != Columna)
                 {
                     return false;
                 }
-                else
+
+                // Hacia abajo
+                if (filaDestino > Fila)
                 {
-                    return true;
+                    for (int i = Fila + 1; i < filaDestino; i++)
+                    {
+                        if (tablero[i, Columna] != "   ")
+                        {
+                            return false;
+                        }
+                    }
                 }
-            }
+
+                // Hacia arriba
+                if (filaDestino < Fila)
+                {
+                    for (int i = Fila - 1; i > filaDestino; i--)
+                    {
+                        if (tablero[i, Columna] != "   ")
+                        {
+                            return false;
+                        }
+                    }
+                }
+
+                // Hacia la derecha
+                if (columnaDestino > Columna)
+                {
+                    for (int i = Columna + 1; i < columnaDestino; i++)
+                    {
+                        if (tablero[Fila, i] != "   ")
+                        {
+                            return false;
+                        }
+                    }
+                }
+
+                // Hacia la izquierda
+                if (columnaDestino < Columna)
+                {
+                    for (int i = Columna - 1; i > columnaDestino; i--)
+                    {
+                        if (tablero[Fila, i] != "   ")
+                        {
+                            return false;
+                        }
+                    }   }  return true;           }
 
         }
 
         public class Soldier : Pieza
         {
             public string Figura => "|S|";
-            public string Color;
+
             public void MostrarPosicion(string[,] tablero)
             {
                 tablero[Fila, Columna] = Figura;
@@ -196,25 +238,25 @@ namespace Juego_proyecto
 
             Soldier S1 = new Soldier();
             S1.Juega = true;
-            S1.Color = "red";
+            S1.Color = "Red";
             S1.Fila = 1;
             S1.Columna = 2;
 
             Soldier S2 = new Soldier();
             S2.Juega = true;
-            S2.Color = "red";
+            S2.Color = "Red";
             S2.Fila = 1;
             S2.Columna = 3;
 
             Soldier S3 = new Soldier();
             S3.Juega = true;
-            S3.Color = "red";
+            S3.Color = "Red";
             S3.Fila = 1;
             S3.Columna = 4;
 
             Soldier S4 = new Soldier();
             S4.Juega = true;
-            S4.Color = "red";
+            S4.Color = "Red";
             S4.Fila = 1;
             S4.Columna = 5;
 
@@ -384,7 +426,20 @@ namespace Juego_proyecto
                         }
                         else
                         {
-                            Console.ForegroundColor = ConsoleColor.Red;
+                            Pieza pieza = ObtenerPiezaEn(i, j);
+
+                            if (pieza != null)
+                            {
+                                if (pieza.Color == "Green")
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Green;
+                                }
+                                else if (pieza.Color == "Red")
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                }
+                            }
+
                             Console.Write(Table[i, j]);
                         }
                     }
@@ -490,7 +545,7 @@ namespace Juego_proyecto
                 else if (r == S7.Fila && c == S7.Columna)
                 {
                     S7.Juega = false;
-                    S8.Muerto();
+                    S7.Muerto();
                 }
                 else if (r == S8.Fila && c == S8.Columna)
                 {
@@ -535,6 +590,28 @@ namespace Juego_proyecto
                     S4.Juega = false;
                     S4.Muerto();
                 }
+            }
+
+            Pieza ObtenerPiezaEn(int f, int c)
+            {
+                if (R1.Fila == f && R1.Columna == c) return R1;
+                if (R2.Fila == f && R2.Columna == c) return R2;
+
+                if (T1.Fila == f && T1.Columna == c) return T1;
+                if (T2.Fila == f && T2.Columna == c) return T2;
+                if (T3.Fila == f && T3.Columna == c) return T3;
+                if (T4.Fila == f && T4.Columna == c) return T4;
+
+                if (S1.Fila == f && S1.Columna == c) return S1;
+                if (S2.Fila == f && S2.Columna == c) return S2;
+                if (S3.Fila == f && S3.Columna == c) return S3;
+                if (S4.Fila == f && S4.Columna == c) return S4;
+                if (S5.Fila == f && S5.Columna == c) return S5;
+                if (S6.Fila == f && S6.Columna == c) return S6;
+                if (S7.Fila == f && S7.Columna == c) return S7;
+                if (S8.Fila == f && S8.Columna == c) return S8;
+
+                return null;
             }
             //login de inicio
 
@@ -590,7 +667,7 @@ namespace Juego_proyecto
 
                             if (J1.Turno)
                             {
-                                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
                                 J1.MostrarTurno();
                             }
                             else
@@ -795,7 +872,7 @@ namespace Juego_proyecto
                                             seguro = true;
                                         }
                                     } while (seguro == false);
-                                    if (T1.ValidarTower(filaDestino, columnaDestino) == true) { T1.MoverTorre(filaDestino, columnaDestino); seguro = true; }
+                                    if (T1.ValidarTower(filaDestino, columnaDestino, Table) == true) { T1.MoverTorre(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
                                         Console.ForegroundColor = ConsoleColor.Red;
@@ -839,7 +916,7 @@ namespace Juego_proyecto
                                             seguro = true;
                                         }
                                     } while (seguro == false);
-                                    if (T2.ValidarTower(filaDestino, columnaDestino) == true) { T2.MoverTorre(filaDestino, columnaDestino); seguro = true; }
+                                    if (T2.ValidarTower(filaDestino, columnaDestino, Table) == true) { T2.MoverTorre(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
                                         Console.ForegroundColor = ConsoleColor.Red;
@@ -881,7 +958,7 @@ namespace Juego_proyecto
                                             seguro = true;
                                         }
                                     } while (seguro == false);
-                                    if (T3.ValidarTower(filaDestino, columnaDestino) == true) { T3.MoverTorre(filaDestino, columnaDestino); seguro = true; }
+                                    if (T3.ValidarTower(filaDestino, columnaDestino, Table) == true) { T3.MoverTorre(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
                                         Console.ForegroundColor = ConsoleColor.Red;
@@ -923,7 +1000,7 @@ namespace Juego_proyecto
                                             seguro = true;
                                         }
                                     } while (seguro == false);
-                                    if (T4.ValidarTower(filaDestino, columnaDestino) == true) { T4.MoverTorre(filaDestino, columnaDestino); seguro = true; }
+                                    if (T4.ValidarTower(filaDestino, columnaDestino, Table) == true) { T4.MoverTorre(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
                                         Console.ForegroundColor = ConsoleColor.Red;
