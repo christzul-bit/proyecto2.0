@@ -71,13 +71,11 @@ namespace Juego_proyecto
 
             public bool ValidarTower(int filaDestino, int columnaDestino, string[,] tablero)
             {
-                // Validar que sea recto
                 if (filaDestino != Fila && columnaDestino != Columna)
                 {
                     return false;
                 }
 
-                // Hacia abajo
                 if (filaDestino > Fila)
                 {
                     for (int i = Fila + 1; i < filaDestino; i++)
@@ -88,8 +86,6 @@ namespace Juego_proyecto
                         }
                     }
                 }
-
-                // Hacia arriba
                 if (filaDestino < Fila)
                 {
                     for (int i = Fila - 1; i > filaDestino; i--)
@@ -100,8 +96,6 @@ namespace Juego_proyecto
                         }
                     }
                 }
-
-                // Hacia la derecha
                 if (columnaDestino > Columna)
                 {
                     for (int i = Columna + 1; i < columnaDestino; i++)
@@ -112,8 +106,6 @@ namespace Juego_proyecto
                         }
                     }
                 }
-
-                // Hacia la izquierda
                 if (columnaDestino < Columna)
                 {
                     for (int i = Columna - 1; i > columnaDestino; i--)
@@ -139,27 +131,47 @@ namespace Juego_proyecto
                 Fila = f;
                 Columna = c;
             }
-            public bool ValidarSoldierJ1(int filaDestino, int columnaDestino)
+            public bool ValidarSoldierJ1(int filaDestino, int columnaDestino, string[,] tablero)
             {
-                if (filaDestino <= Fila || filaDestino > Fila + 1)
+                if (filaDestino == Fila + 1 && columnaDestino == Columna)
                 {
-                    return false;
+                    if (tablero[filaDestino, columnaDestino] == "   ")
+                    {
+                        return true;
+                    }
                 }
-                else
+                if (filaDestino == Fila + 1)
                 {
-                    return true;
+                    if (columnaDestino == Columna + 1 || columnaDestino == Columna - 1)
+                    {
+                        if (tablero[filaDestino, columnaDestino] != "   ")
+                        {
+                            return true;
+                        }
+                    }
                 }
+                return false;
             }
-            public bool ValidarSoldierJ2(int filaDestino, int columnaDestino)
+            public bool ValidarSoldierJ2(int filaDestino, int columnaDestino, string[,] tablero)
             {
-                if (filaDestino >= Fila || filaDestino < Fila - 1)
+                if (filaDestino == Fila - 1 && columnaDestino == Columna)
                 {
-                    return false;
+                    if (tablero[filaDestino, columnaDestino] == "   ")
+                    {
+                        return true;
+                    }
                 }
-                else
+                if (filaDestino == Fila - 1)
                 {
-                    return true;
+                    if (columnaDestino == Columna + 1 || columnaDestino == Columna - 1)
+                    {
+                        if (tablero[filaDestino, columnaDestino] != "   ")
+                        {
+                            return true;
+                        }
+                    }
                 }
+                return false;
             }
         }
 
@@ -1042,7 +1054,7 @@ namespace Juego_proyecto
                                             seguro = true;
                                         }
                                     } while (seguro == false);
-                                    if (S1.ValidarSoldierJ1(filaDestino, columnaDestino) == true) { S1.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
+                                    if (S1.ValidarSoldierJ1(filaDestino, columnaDestino, Table) == true) { S1.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
                                          Console.ForegroundColor = ConsoleColor.Red;
@@ -1084,7 +1096,11 @@ namespace Juego_proyecto
                                             seguro = true;
                                         }
                                     } while (seguro == false);
-                                    if (S2.ValidarSoldierJ1(filaDestino, columnaDestino) == true) { S2.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
+                                    if (S2.ValidarSoldierJ1(filaDestino, columnaDestino, Table))
+                                    {
+                                        S2.MoverSoldado(filaDestino, columnaDestino);
+                                        seguro = true;
+                                    }
                                     else
                                     {
                                         Console.ForegroundColor = ConsoleColor.Red;
@@ -1126,7 +1142,7 @@ namespace Juego_proyecto
                                             seguro = true;
                                         }
                                     } while (seguro == false);
-                                    if (S3.ValidarSoldierJ1(filaDestino, columnaDestino) == true) { S3.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
+                                    if (S3.ValidarSoldierJ1(filaDestino, columnaDestino, Table) == true) { S3.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
                                         Console.ForegroundColor = ConsoleColor.Red;
@@ -1168,7 +1184,7 @@ namespace Juego_proyecto
                                             seguro = true;
                                         }
                                     } while (seguro == false);
-                                    if (S4.ValidarSoldierJ1(filaDestino, columnaDestino) == true) { S4.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
+                                    if (S4.ValidarSoldierJ1(filaDestino, columnaDestino, Table) == true) { S4.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
                                         Console.ForegroundColor = ConsoleColor.Red;
@@ -1210,7 +1226,7 @@ namespace Juego_proyecto
                                             seguro = true;
                                         }
                                     } while (seguro == false);
-                                    if (S5.ValidarSoldierJ2(filaDestino, columnaDestino) == true) { S5.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
+                                    if (S5.ValidarSoldierJ2(filaDestino, columnaDestino, Table) == true) { S5.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
                                         Console.ForegroundColor = ConsoleColor.Red;
@@ -1252,7 +1268,7 @@ namespace Juego_proyecto
                                             seguro = true;
                                         }
                                     } while (seguro == false);
-                                    if (S6.ValidarSoldierJ2(filaDestino, columnaDestino) == true) { S6.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
+                                    if (S6.ValidarSoldierJ2(filaDestino, columnaDestino, Table) == true) { S6.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
                                         Console.ForegroundColor = ConsoleColor.Red;
@@ -1294,7 +1310,7 @@ namespace Juego_proyecto
                                             seguro = true;
                                         }
                                     } while (seguro == false);
-                                    if (S7.ValidarSoldierJ2(filaDestino, columnaDestino) == true) { S7.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
+                                    if (S7.ValidarSoldierJ2(filaDestino, columnaDestino, Table) == true) { S7.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
                                         Console.ForegroundColor = ConsoleColor.Red;
@@ -1336,7 +1352,7 @@ namespace Juego_proyecto
                                             seguro = true;
                                         }
                                     } while (seguro == false);
-                                    if (S8.ValidarSoldierJ2(filaDestino, columnaDestino) == true) { S8.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
+                                    if (S5.ValidarSoldierJ2(filaDestino, columnaDestino, Table) == true) { S8.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
                                         Console.ForegroundColor = ConsoleColor.Red;
