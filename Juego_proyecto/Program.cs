@@ -244,6 +244,7 @@ namespace Juego_proyecto
             int cantidad, opcion = 0, column = 0, row =0;
             int filaDestino = 0;
             int columnaDestino = 0;
+            string[,] Table = new string[8,8];
 
             
             // procedimiento para cambiar las teclas por *
@@ -288,17 +289,13 @@ namespace Juego_proyecto
             // procedimiento para mostrar el tablareo y jugadas
             void Vertablero()
             {
-                string[,] Table =
+                for (int i = 0; i < 8; i++)
                 {
-        { "   ", "   ", "   ", "   ", "   ", "   ", "   ", "   " },
-        { "   ", "   ", "   ", "   ", "   ", "   ", "   ", "   " },
-        { "   ", "   ", "   ", "   ", "   ", "   ", "   ", "   " },
-        { "   ", "   ", "   ", "   ", "   ", "   ", "   ", "   " },
-        { "   ", "   ", "   ", "   ", "   ", "   ", "   ", "   " },
-        { "   ", "   ", "   ", "   ", "   ", "   ", "   ", "   " },
-        { "   ", "   ", "   ", "   ", "   ", "   ", "   ", "   " },
-        { "   ", "   ", "   ", "   ", "   ", "   ", "   ", "   " }
-    };
+                    for (int j = 0; j < 8; j++)
+                    {
+                        Table[i, j] = "   ";
+                    }
+                }
 
                 Table[R1.Fila, R1.Columna] = "K1 ";
                 Table[R2.Fila, R2.Columna] = "K2 ";
@@ -483,6 +480,7 @@ namespace Juego_proyecto
                             Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("Ingrese fila de origen:");
                             Cords();
+                            
 
                             int filaOrigen = row;
                             int columnaOrigen = column;
@@ -555,7 +553,7 @@ namespace Juego_proyecto
                             if (piezaSeleccionada == null)
                             {
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("No hay ninguna pieza en esa posición, o selecciona la pieza del rival.");
+                                Console.WriteLine("No hay ninguna pieza en esa posición, o selecciono la pieza del rival.");
                                 Console.ReadKey();
                                 continue;
                             }
@@ -566,7 +564,32 @@ namespace Juego_proyecto
                             {
                                 do
                                 {
-                                    Cords();
+                                    do
+                                    {
+                                        Cords();
+
+                                        if (Dobleposicion(filaDestino, columnaDestino, Table) == true)
+                                        {
+                                            if (filaDestino == T1.Fila && columnaDestino == T1.Columna || filaDestino == T2.Fila && columnaDestino == T2.Columna ||
+                                                filaDestino == S1.Fila && columnaDestino == S1.Columna || filaDestino == S2.Fila && columnaDestino == S2.Columna ||
+                                                filaDestino == S3.Fila && columnaDestino == S3.Columna || filaDestino == S4.Fila && columnaDestino == S4.Columna)
+                                            {
+                                                Console.ForegroundColor = ConsoleColor.Red;
+                                                Console.WriteLine("La posicion esta siendo ocupada por una pieza aliada");
+                                                seguro = false;
+                                                Console.ReadKey();
+                                                Console.Clear();
+                                                Vertablero();
+                                            } else
+                                            {
+                                                seguro = true;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            seguro = true;
+                                        }
+                                    } while (seguro == false);
                                     if (R1.ValidarKing(filaDestino, columnaDestino) == true) { R1.MoverRey(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
@@ -582,7 +605,33 @@ namespace Juego_proyecto
                             {
                                 do
                                 {
-                                    Cords();
+                                    do
+                                    {
+                                        Cords();
+
+                                        if (Dobleposicion(filaDestino, columnaDestino, Table) == true)
+                                        {
+                                            if (filaDestino == T3.Fila && columnaDestino == T3.Columna || filaDestino == T4.Fila && columnaDestino == T4.Columna ||
+                                                filaDestino == S5.Fila && columnaDestino == S5.Columna || filaDestino == S6.Fila && columnaDestino == S6.Columna ||
+                                                filaDestino == S7.Fila && columnaDestino == S7.Columna || filaDestino == S8.Fila && columnaDestino == S8.Columna)
+                                            {
+                                                Console.ForegroundColor = ConsoleColor.Red;
+                                                Console.WriteLine("La posicion esta siendo ocupada por una pieza aliada");
+                                                seguro = false;
+                                                Console.ReadKey();
+                                                Console.Clear();
+                                                Vertablero();
+                                            }
+                                            else
+                                            {
+                                                seguro = true;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            seguro = true;
+                                        }
+                                    } while (seguro == false);
                                     if (R2.ValidarKing(filaDestino, columnaDestino) == true) { R2.MoverRey(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
@@ -596,7 +645,33 @@ namespace Juego_proyecto
                             {
                                 do
                                 {
-                                    Cords();
+                                    do
+                                    {
+                                        Cords();
+
+                                        if (Dobleposicion(filaDestino, columnaDestino, Table) == true)
+                                        {
+                                            if (filaDestino == R1.Fila && columnaDestino == R1.Columna || filaDestino == T2.Fila && columnaDestino == T2.Columna ||
+                                                filaDestino == S1.Fila && columnaDestino == S1.Columna || filaDestino == S2.Fila && columnaDestino == S2.Columna ||
+                                                filaDestino == S3.Fila && columnaDestino == S3.Columna || filaDestino == S4.Fila && columnaDestino == S4.Columna)
+                                            {
+                                                Console.ForegroundColor = ConsoleColor.Red;
+                                                Console.WriteLine("La posicion esta siendo ocupada por una pieza aliada");
+                                                seguro = false;
+                                                Console.ReadKey();
+                                                Console.Clear();
+                                                Vertablero();
+                                            }
+                                            else
+                                            {
+                                                seguro = true;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            seguro = true;
+                                        }
+                                    } while (seguro == false);
                                     if (T1.ValidarTower(filaDestino, columnaDestino) == true) { T1.MoverTorre(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
@@ -612,7 +687,33 @@ namespace Juego_proyecto
                             {
                                 do
                                 {
-                                    Cords();
+                                    do
+                                    {
+                                        Cords();
+
+                                        if (Dobleposicion(filaDestino, columnaDestino, Table) == true)
+                                        {
+                                            if (filaDestino == R1.Fila && columnaDestino == R1.Columna || filaDestino == T1.Fila && columnaDestino == T1.Columna ||
+                                                filaDestino == S1.Fila && columnaDestino == S1.Columna || filaDestino == S2.Fila && columnaDestino == S2.Columna ||
+                                                filaDestino == S3.Fila && columnaDestino == S3.Columna || filaDestino == S4.Fila && columnaDestino == S4.Columna)
+                                            {
+                                                Console.ForegroundColor = ConsoleColor.Red;
+                                                Console.WriteLine("La posicion esta siendo ocupada por una pieza aliada");
+                                                seguro = false;
+                                                Console.ReadKey();
+                                                Console.Clear();
+                                                Vertablero();
+                                            }
+                                            else
+                                            {
+                                                seguro = true;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            seguro = true;
+                                        }
+                                    } while (seguro == false);
                                     if (T2.ValidarTower(filaDestino, columnaDestino) == true) { T2.MoverTorre(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
@@ -627,7 +728,33 @@ namespace Juego_proyecto
                             {
                                 do
                                 {
-                                    Cords();
+                                    do
+                                    {
+                                        Cords();
+
+                                        if (Dobleposicion(filaDestino, columnaDestino, Table) == true)
+                                        {
+                                            if (filaDestino == R2.Fila && columnaDestino == R2.Columna || filaDestino == T4.Fila && columnaDestino == T4.Columna ||
+                                                filaDestino == S5.Fila && columnaDestino == S5.Columna || filaDestino == S6.Fila && columnaDestino == S6.Columna ||
+                                                filaDestino == S7.Fila && columnaDestino == S7.Columna || filaDestino == S8.Fila && columnaDestino == S8.Columna)
+                                            {
+                                                Console.ForegroundColor = ConsoleColor.Red;
+                                                Console.WriteLine("La posicion esta siendo ocupada por una pieza aliada");
+                                                seguro = false;
+                                                Console.ReadKey();
+                                                Console.Clear();
+                                                Vertablero();
+                                            }
+                                            else
+                                            {
+                                                seguro = true;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            seguro = true;
+                                        }
+                                    } while (seguro == false);
                                     if (T3.ValidarTower(filaDestino, columnaDestino) == true) { T3.MoverTorre(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
@@ -642,7 +769,33 @@ namespace Juego_proyecto
                             {
                                 do
                                 {
-                                    Cords();
+                                    do
+                                    {
+                                        Cords();
+
+                                        if (Dobleposicion(filaDestino, columnaDestino, Table) == true)
+                                        {
+                                            if (filaDestino == R2.Fila && columnaDestino == R2.Columna || filaDestino == T3.Fila && columnaDestino == T3.Columna ||
+                                                filaDestino == S5.Fila && columnaDestino == S5.Columna || filaDestino == S6.Fila && columnaDestino == S6.Columna ||
+                                                filaDestino == S7.Fila && columnaDestino == S7.Columna || filaDestino == S8.Fila && columnaDestino == S8.Columna)
+                                            {
+                                                Console.ForegroundColor = ConsoleColor.Red;
+                                                Console.WriteLine("La posicion esta siendo ocupada por una pieza aliada");
+                                                seguro = false;
+                                                Console.ReadKey();
+                                                Console.Clear();
+                                                Vertablero();
+                                            }
+                                            else
+                                            {
+                                                seguro = true;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            seguro = true;
+                                        }
+                                    } while (seguro == false);
                                     if (T4.ValidarTower(filaDestino, columnaDestino) == true) { T4.MoverTorre(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
@@ -657,7 +810,33 @@ namespace Juego_proyecto
                             {
                                 do
                                 {
-                                    Cords();
+                                    do
+                                    {
+                                        Cords();
+
+                                        if (Dobleposicion(filaDestino, columnaDestino, Table) == true)
+                                        {
+                                            if (filaDestino == T1.Fila && columnaDestino == T1.Columna || filaDestino == T2.Fila && columnaDestino == T2.Columna ||
+                                                filaDestino == R1.Fila && columnaDestino == R1.Columna || filaDestino == S2.Fila && columnaDestino == S2.Columna ||
+                                                filaDestino == S3.Fila && columnaDestino == S3.Columna || filaDestino == S4.Fila && columnaDestino == S4.Columna)
+                                            {
+                                                Console.ForegroundColor = ConsoleColor.Red;
+                                                Console.WriteLine("La posicion esta siendo ocupada por una pieza aliada");
+                                                seguro = false;
+                                                Console.ReadKey();
+                                                Console.Clear();
+                                                Vertablero();
+                                            }
+                                            else
+                                            {
+                                                seguro = true;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            seguro = true;
+                                        }
+                                    } while (seguro == false);
                                     if (S1.ValidarSoldierJ1(filaDestino, columnaDestino) == true) { S1.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
@@ -672,7 +851,33 @@ namespace Juego_proyecto
                             {
                                 do
                                 {
-                                    Cords();
+                                    do
+                                    {
+                                        Cords();
+
+                                        if (Dobleposicion(filaDestino, columnaDestino, Table) == true)
+                                        {
+                                            if (filaDestino == T1.Fila && columnaDestino == T1.Columna || filaDestino == T2.Fila && columnaDestino == T2.Columna ||
+                                                filaDestino == S1.Fila && columnaDestino == S1.Columna || filaDestino == R1.Fila && columnaDestino == R1.Columna ||
+                                                filaDestino == S3.Fila && columnaDestino == S3.Columna || filaDestino == S4.Fila && columnaDestino == S4.Columna)
+                                            {
+                                                Console.ForegroundColor = ConsoleColor.Red;
+                                                Console.WriteLine("La posicion esta siendo ocupada por una pieza aliada");
+                                                seguro = false;
+                                                Console.ReadKey();
+                                                Console.Clear();
+                                                Vertablero();
+                                            }
+                                            else
+                                            {
+                                                seguro = true;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            seguro = true;
+                                        }
+                                    } while (seguro == false);
                                     if (S2.ValidarSoldierJ1(filaDestino, columnaDestino) == true) { S2.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
@@ -687,7 +892,33 @@ namespace Juego_proyecto
                             {
                                 do
                                 {
-                                    Cords();
+                                    do
+                                    {
+                                        Cords();
+
+                                        if (Dobleposicion(filaDestino, columnaDestino, Table) == true)
+                                        {
+                                            if (filaDestino == T1.Fila && columnaDestino == T1.Columna || filaDestino == T2.Fila && columnaDestino == T2.Columna ||
+                                                filaDestino == S1.Fila && columnaDestino == S1.Columna || filaDestino == S2.Fila && columnaDestino == S2.Columna ||
+                                                filaDestino == R1.Fila && columnaDestino == R1.Columna || filaDestino == S4.Fila && columnaDestino == S4.Columna)
+                                            {
+                                                Console.ForegroundColor = ConsoleColor.Red;
+                                                Console.WriteLine("La posicion esta siendo ocupada por una pieza aliada");
+                                                seguro = false;
+                                                Console.ReadKey();
+                                                Console.Clear();
+                                                Vertablero();
+                                            }
+                                            else
+                                            {
+                                                seguro = true;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            seguro = true;
+                                        }
+                                    } while (seguro == false);
                                     if (S3.ValidarSoldierJ1(filaDestino, columnaDestino) == true) { S3.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
@@ -702,7 +933,33 @@ namespace Juego_proyecto
                             {
                                 do
                                 {
-                                    Cords();
+                                    do
+                                    {
+                                        Cords();
+
+                                        if (Dobleposicion(filaDestino, columnaDestino, Table) == true)
+                                        {
+                                            if (filaDestino == T1.Fila && columnaDestino == T1.Columna || filaDestino == T2.Fila && columnaDestino == T2.Columna ||
+                                                filaDestino == S1.Fila && columnaDestino == S1.Columna || filaDestino == S2.Fila && columnaDestino == S2.Columna ||
+                                                filaDestino == S3.Fila && columnaDestino == S3.Columna || filaDestino == R1.Fila && columnaDestino == R1.Columna)
+                                            {
+                                                Console.ForegroundColor = ConsoleColor.Red;
+                                                Console.WriteLine("La posicion esta siendo ocupada por una pieza aliada");
+                                                seguro = false;
+                                                Console.ReadKey();
+                                                Console.Clear();
+                                                Vertablero();
+                                            }
+                                            else
+                                            {
+                                                seguro = true;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            seguro = true;
+                                        }
+                                    } while (seguro == false);
                                     if (S4.ValidarSoldierJ1(filaDestino, columnaDestino) == true) { S4.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
@@ -717,7 +974,33 @@ namespace Juego_proyecto
                             {
                                 do
                                 {
-                                    Cords();
+                                    do
+                                    {
+                                        Cords();
+
+                                        if (Dobleposicion(filaDestino, columnaDestino, Table) == true)
+                                        {
+                                            if (filaDestino == T3.Fila && columnaDestino == T3.Columna || filaDestino == T4.Fila && columnaDestino == T4.Columna ||
+                                                filaDestino == R2.Fila && columnaDestino == R2.Columna || filaDestino == S6.Fila && columnaDestino == S6.Columna ||
+                                                filaDestino == S7.Fila && columnaDestino == S7.Columna || filaDestino == S8.Fila && columnaDestino == S8.Columna)
+                                            {
+                                                Console.ForegroundColor = ConsoleColor.Red;
+                                                Console.WriteLine("La posicion esta siendo ocupada por una pieza aliada");
+                                                seguro = false;
+                                                Console.ReadKey();
+                                                Console.Clear();
+                                                Vertablero();
+                                            }
+                                            else
+                                            {
+                                                seguro = true;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            seguro = true;
+                                        }
+                                    } while (seguro == false);
                                     if (S5.ValidarSoldierJ2(filaDestino, columnaDestino) == true) { S5.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
@@ -732,7 +1015,33 @@ namespace Juego_proyecto
                             {
                                 do
                                 {
-                                    Cords();
+                                    do
+                                    {
+                                        Cords();
+
+                                        if (Dobleposicion(filaDestino, columnaDestino, Table) == true)
+                                        {
+                                            if (filaDestino == T3.Fila && columnaDestino == T3.Columna || filaDestino == T4.Fila && columnaDestino == T4.Columna ||
+                                                filaDestino == S5.Fila && columnaDestino == S5.Columna || filaDestino == R2.Fila && columnaDestino == R2.Columna ||
+                                                filaDestino == S7.Fila && columnaDestino == S7.Columna || filaDestino == S8.Fila && columnaDestino == S8.Columna)
+                                            {
+                                                Console.ForegroundColor = ConsoleColor.Red;
+                                                Console.WriteLine("La posicion esta siendo ocupada por una pieza aliada");
+                                                seguro = false;
+                                                Console.ReadKey();
+                                                Console.Clear();
+                                                Vertablero();
+                                            }
+                                            else
+                                            {
+                                                seguro = true;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            seguro = true;
+                                        }
+                                    } while (seguro == false);
                                     if (S6.ValidarSoldierJ2(filaDestino, columnaDestino) == true) { S6.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
@@ -747,7 +1056,33 @@ namespace Juego_proyecto
                             {
                                 do
                                 {
-                                    Cords();
+                                    do
+                                    {
+                                        Cords();
+
+                                        if (Dobleposicion(filaDestino, columnaDestino, Table) == true)
+                                        {
+                                            if (filaDestino == T3.Fila && columnaDestino == T3.Columna || filaDestino == T4.Fila && columnaDestino == T4.Columna ||
+                                                filaDestino == S5.Fila && columnaDestino == S5.Columna || filaDestino == S6.Fila && columnaDestino == S6.Columna ||
+                                                filaDestino == R2.Fila && columnaDestino == R2.Columna || filaDestino == S8.Fila && columnaDestino == S8.Columna)
+                                            {
+                                                Console.ForegroundColor = ConsoleColor.Red;
+                                                Console.WriteLine("La posicion esta siendo ocupada por una pieza aliada");
+                                                seguro = false;
+                                                Console.ReadKey();
+                                                Console.Clear();
+                                                Vertablero();
+                                            }
+                                            else
+                                            {
+                                                seguro = true;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            seguro = true;
+                                        }
+                                    } while (seguro == false);
                                     if (S7.ValidarSoldierJ2(filaDestino, columnaDestino) == true) { S7.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
@@ -762,7 +1097,33 @@ namespace Juego_proyecto
                             {
                                 do
                                 {
-                                    Cords();
+                                    do
+                                    {
+                                        Cords();
+
+                                        if (Dobleposicion(filaDestino, columnaDestino, Table) == true)
+                                        {
+                                            if (filaDestino == T3.Fila && columnaDestino == T3.Columna || filaDestino == T4.Fila && columnaDestino == T4.Columna ||
+                                                filaDestino == S5.Fila && columnaDestino == S5.Columna || filaDestino == S6.Fila && columnaDestino == S6.Columna ||
+                                                filaDestino == S7.Fila && columnaDestino == S7.Columna || filaDestino == R2.Fila && columnaDestino == R2.Columna)
+                                            {
+                                                Console.ForegroundColor = ConsoleColor.Red;
+                                                Console.WriteLine("La posicion esta siendo ocupada por una pieza aliada");
+                                                seguro = false;
+                                                Console.ReadKey();
+                                                Console.Clear();
+                                                Vertablero();
+                                            }
+                                            else
+                                            {
+                                                seguro = true;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            seguro = true;
+                                        }
+                                    } while (seguro == false);
                                     if (S8.ValidarSoldierJ2(filaDestino, columnaDestino) == true) { S8.MoverSoldado(filaDestino, columnaDestino); seguro = true; }
                                     else
                                     {
