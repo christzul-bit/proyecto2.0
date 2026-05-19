@@ -807,6 +807,9 @@ namespace Juego_proyecto
                                         Console.ForegroundColor = ConsoleColor.Red;
                                         Console.WriteLine("Movimiento invalido para el Rey. El Rey solo puede moverse una casilla en cualquier dirección.");
                                         seguro = false;
+                                        Console.ReadKey();
+                                        Console.Clear();
+                                        Vertablero();
                                     }
                                 } while (seguro == false);
                                 CapturarJ1(filaDestino, columnaDestino);
@@ -849,6 +852,9 @@ namespace Juego_proyecto
                                         Console.ForegroundColor = ConsoleColor.Red;
                                         Console.WriteLine("Movimiento invalido para el Rey. El Rey solo puede moverse una casilla en cualquier dirección.");
                                         seguro = false;
+                                        Console.ReadKey();
+                                        Console.Clear();
+                                        Vertablero();
                                     }
                                 } while (seguro == false);
                                 CapturarJ2(filaDestino, columnaDestino);
@@ -890,6 +896,9 @@ namespace Juego_proyecto
                                         Console.ForegroundColor = ConsoleColor.Red;
                                         Console.WriteLine("Movimiento invalido para la Torre. La Torre solo puede moverse en línea recta.");
                                         seguro = false;
+                                        Console.ReadKey();
+                                        Console.Clear();
+                                        Vertablero();
                                     }
 
                                 } while (seguro == false);
@@ -934,6 +943,9 @@ namespace Juego_proyecto
                                         Console.ForegroundColor = ConsoleColor.Red;
                                         Console.WriteLine("Movimiento invalido para la Torre. La Torre solo puede moverse en línea recta.");
                                         seguro = false;
+                                        Console.ReadKey();
+                                        Console.Clear();
+                                        Vertablero();
                                     }
 
                                 } while (seguro == false);
@@ -976,6 +988,9 @@ namespace Juego_proyecto
                                         Console.ForegroundColor = ConsoleColor.Red;
                                         Console.WriteLine("Movimiento invalido para la Torre. La Torre solo puede moverse en línea recta.");
                                         seguro = false;
+                                        Console.ReadKey();
+                                        Console.Clear();
+                                        Vertablero();
                                     }
 
                                 } while (seguro == false);
@@ -1018,6 +1033,9 @@ namespace Juego_proyecto
                                         Console.ForegroundColor = ConsoleColor.Red;
                                         Console.WriteLine("Movimiento invalido para la Torre. La Torre solo puede moverse en línea recta.");
                                         seguro = false;
+                                        Console.ReadKey();
+                                        Console.Clear();
+                                        Vertablero();
                                     }
 
                                 } while (seguro == false) ;
@@ -1060,6 +1078,9 @@ namespace Juego_proyecto
                                          Console.ForegroundColor = ConsoleColor.Red;
                                         Console.WriteLine("Movimiento invalido para el Soldado. El Soldado solo puede moverse una casilla hacia adelante.");
                                         seguro = false;
+                                        Console.ReadKey();
+                                        Console.Clear();
+                                        Vertablero();
                                     }
 
                                 } while (seguro == false);
@@ -1106,6 +1127,9 @@ namespace Juego_proyecto
                                         Console.ForegroundColor = ConsoleColor.Red;
                                         Console.WriteLine("Movimiento invalido para el Soldado. El Soldado solo puede moverse una casilla hacia adelante.");
                                         seguro = false;
+                                        Console.ReadKey();
+                                        Console.Clear();
+                                        Vertablero();
                                     }
 
                                 } while (seguro == false);
@@ -1148,6 +1172,9 @@ namespace Juego_proyecto
                                         Console.ForegroundColor = ConsoleColor.Red;
                                         Console.WriteLine("Movimiento invalido para el Soldado. El Soldado solo puede moverse una casilla hacia adelante.");
                                         seguro = false;
+                                        Console.ReadKey();
+                                        Console.Clear();
+                                        Vertablero();
                                     }
 
                                 } while (seguro == false);
@@ -1190,6 +1217,9 @@ namespace Juego_proyecto
                                         Console.ForegroundColor = ConsoleColor.Red;
                                         Console.WriteLine("Movimiento invalido para el Soldado. El Soldado solo puede moverse una casilla hacia adelante.");
                                         seguro = false;
+                                        Console.ReadKey();
+                                        Console.Clear();
+                                        Vertablero();
                                     }
 
                                 } while (seguro == false);
@@ -1232,6 +1262,9 @@ namespace Juego_proyecto
                                         Console.ForegroundColor = ConsoleColor.Red;
                                         Console.WriteLine("Movimiento invalido para el Soldado. El Soldado solo puede moverse una casilla hacia adelante.");
                                         seguro = false;
+                                        Console.ReadKey();
+                                        Console.Clear();
+                                        Vertablero();
                                     }
 
                                 } while (seguro == false);
@@ -1274,6 +1307,9 @@ namespace Juego_proyecto
                                         Console.ForegroundColor = ConsoleColor.Red;
                                         Console.WriteLine("Movimiento invalido para el Soldado. El Soldado solo puede moverse una casilla hacia adelante.");
                                         seguro = false;
+                                        Console.ReadKey();
+                                        Console.Clear();
+                                        Vertablero();
                                     }
 
                                 } while (seguro == false);
@@ -1316,6 +1352,9 @@ namespace Juego_proyecto
                                         Console.ForegroundColor = ConsoleColor.Red;
                                         Console.WriteLine("Movimiento invalido para el Soldado. El Soldado solo puede moverse una casilla hacia adelante.");
                                         seguro = false;
+                                        Console.ReadKey();
+                                        Console.Clear();
+                                        Vertablero();
                                     }
 
                                 } while (seguro == false);
@@ -1358,6 +1397,9 @@ namespace Juego_proyecto
                                         Console.ForegroundColor = ConsoleColor.Red;
                                         Console.WriteLine("Movimiento invalido para el Soldado. El Soldado solo puede moverse una casilla hacia adelante.");
                                         seguro = false;
+                                        Console.ReadKey();
+                                        Console.Clear();
+                                        Vertablero();
                                     }
 
                                 } while (seguro == false);
