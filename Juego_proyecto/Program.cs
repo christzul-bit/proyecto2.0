@@ -535,41 +535,76 @@ namespace Juego_proyecto
                     R2.Juega = false;
                     R2.Muerto();
                     TotalJ1 += 60;
+                    Console.ForegroundColor= ConsoleColor.Magenta;
+                    Console.WriteLine("Pieza capturada: El rey a muerto");
+                    Console.WriteLine("Presione ENTER para continuar......");
+                    Console.ResetColor();
+                    Console.ReadKey();
                 }else if(r == T3.Fila && c == T3.Columna)
                 {
                     T3.Juega = false;
                     T3.Muerto();
                     TotalJ1 += 10;
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("Pieza capturada: La torre a muerto");
+                    Console.WriteLine("Presione ENTER para continuar......");
+                    Console.ResetColor();
+                    Console.ReadKey();
                 }
                 else if (r == T4.Fila && c == T4.Columna)
                 {
                     T4.Juega = false;
                     T4.Muerto();
                     TotalJ1 += 10;
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("Pieza capturada: La torre a muerto");
+                    Console.WriteLine("Presione ENTER para continuar......");
+                    Console.ResetColor();
+                    Console.ReadKey();
                 }
                 else if (r == S5.Fila && c == S5.Columna)
                 {
                     S5.Juega = false;
                     S5.Muerto();
                     TotalJ1 += 10;
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("Pieza capturada: El soldado  a muerto");
+                    Console.WriteLine("Presione ENTER para continuar......");
+                    Console.ResetColor();
+                    Console.ReadKey();
                 }
                 else if (r == S6.Fila && c == S6.Columna)
                 {
                     S6.Juega = false;
                     S6.Muerto();
                     TotalJ1 += 10;
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("Pieza capturada: El soldado  a muerto");
+                    Console.WriteLine("Presione ENTER para continuar......");
+                    Console.ResetColor();
+                    Console.ReadKey();
                 }
                 else if (r == S7.Fila && c == S7.Columna)
                 {
                     S7.Juega = false;
                     S7.Muerto();
                     TotalJ1 += 10;
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("Pieza capturada: El soldado  a muerto");
+                    Console.WriteLine("Presione ENTER para continuar......");
+                    Console.ResetColor();
+                    Console.ReadKey();
                 }
                 else if (r == S8.Fila && c == S8.Columna)
                 {
                     S8.Juega = false;
                     S8.Muerto();
                     TotalJ1 += 10;
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("Pieza capturada: El soldado  a muerto");
+                    Console.WriteLine("Presione ENTER para continuar......");
+                    Console.ResetColor();
+                    Console.ReadKey();
                 }
             }
             void CapturarJ2(int r, int c)
@@ -579,42 +614,77 @@ namespace Juego_proyecto
                     R1.Juega = false;
                     R1.Muerto();
                     TotalJ2 += 60;
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine("Pieza capturada: El rey a muerto");
+                    Console.WriteLine("Presione ENTER para continuar......");
+                    Console.ResetColor();
+                    Console.ReadKey();
                 }
                 else if (r == T1.Fila && c == T1.Columna)
                 {
                     T1.Juega = false;
                     T1.Muerto();
                     TotalJ2 += 10;
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("Pieza capturada: La torre a muerto");
+                    Console.WriteLine("Presione ENTER para continuar......");
+                    Console.ResetColor();
+                    Console.ReadKey();
                 }
                 else if (r == T2.Fila && c == T2.Columna)
                 {
                     T2.Juega = false;
                     T2.Muerto();
                     TotalJ2 += 10;
-                }
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("Pieza capturada: La torre a muerto");
+                    Console.WriteLine("Presione ENTER para continuar......");
+                    Console.ResetColor();
+                    Console.ReadKey();
+                                    }
                 else if (r == S1.Fila && c == S1.Columna)
                 {
                     S1.Juega = false;
                     S1.Muerto();
                     TotalJ2 += 10;
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("Pieza capturada: El soldado  a muerto");
+                    Console.WriteLine("Presione ENTER para continuar......");
+                    Console.ResetColor();
+                    Console.ReadKey();
                 }
                 else if (r == S2.Fila && c == S2.Columna)
                 {
                     S2.Juega = false;
                     S2.Muerto();
                     TotalJ2 += 10;
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("Pieza capturada: El soldado  a muerto");
+                    Console.WriteLine("Presione ENTER para continuar......");
+                    Console.ResetColor();
+                    Console.ReadKey();
                 }
                 else if (r == S3.Fila && c == S3.Columna)
                 {
                     S3.Juega = false;
                     S3.Muerto();
                     TotalJ2 += 10;
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("Pieza capturada: El soldado  a muerto");
+                    Console.WriteLine("Presione ENTER para continuar......");
+                    Console.ResetColor();
+                    Console.ReadKey();
                 }
                 else if (r == S4.Fila && c == S4.Columna)
                 {
                     S4.Juega = false;
                     S4.Muerto();
                     TotalJ2 += 10;
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("Pieza capturada: El soldado  a muerto");
+                    Console.WriteLine("Presione ENTER para continuar......");
+                    Console.ResetColor();
+                    Console.ReadKey();
                 }
             }
             // PORCEDIMINETO PARA reiniciar
@@ -1542,32 +1612,58 @@ namespace Juego_proyecto
                     case 2:
                         Console.ForegroundColor = ConsoleColor.DarkBlue;
                         Console.WriteLine("                              Reglas del juego");
+                        Console.ResetColor();
+                        Console.ForegroundColor= ConsoleColor.Cyan;
                         Console.WriteLine(@"
-                     1.  Funcionamiento general del juego
-                            1.   El juego se desarrolla sobre un tablero de 8x8.
-                            2.   Cada casilla del tablero posee una coordenada dicha por número de fila y número de columna.
-                            3.   El tablero debe mostrara en consola en cada turno de forma clara, permitiendo a los jugadores
-                                 ver el estado actual del juego.
-                           Cada jugador contará con las siguientes piezas:
-                                • 1 Rey
-                                • 2 Torres
-                                • 4 Soldados
+ 1.  Funcionamiento general del juego");
+                        Console.ResetColor();
+                        Console.ForegroundColor= ConsoleColor.White;
+                        Console.WriteLine(@"  
+         1.   El juego se desarrolla sobre un tablero de 8x8.
+         2.   Cada casilla del tablero posee una coordenada dicha por número de fila y número de columna.
+         3.   El tablero debe mostrara en consola en cada turno de forma clara, permitiendo a los jugadores
+              ver el estado actual del juego.
+
+        Cada jugador contará con las siguientes piezas:
+                • 1 Rey sera el objetivo principal del juego, si el rey es capturado el jugador pierde la partida.
+                • 2 Torres seran las piezas mas poderosas del juego, pueden moverse en linea recta 
+                  y recorrer varias casillas si el camino esta libre. No pueden saltar piezas.
+                • 4 Soldados seran las piezas mas numerosas del juego, pueden avanzar una casilla hacia adelante,
+                  atacar en diagonal y no pueden retroceder.");
+                        Console.ResetColor(); 
+                        Console.ForegroundColor= ConsoleColor.Cyan;
+                        Console.WriteLine(@"
 
 
-                    2.  Movimiento de piezas
-                             Durante su turno, el jugador debe ingresar la posición de origen y la posición de destino, indicando fila y columna.
-                             El sistema no ejecutara el movimiento directamente. Primero validara completamente que el movimiento sea valido. 
+
+ 2.  Movimiento de piezas");
+                        Console.ResetColor();
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine(@"
+               Durante su turno, el jugador debe ingresar la posición de origen y la posición de destino,
+               indicando fila y columna.
+               El sistema no ejecutara el movimiento directamente. Primero validara completamente que el 
+               movimiento sea valido. ");
+                        Console.ResetColor();
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine(@"
 
 
-                     3.  Reglas de movimiento
-                            Cada tipo de pieza tiene un comportamiento específico que debe respetarse en todo momento.
-                                 • Rey: puede moverse una sola casilla en cualquier dirección (horizontal, vertical o diagonal).
-                                 • Torre: puede moverse en línea recta (horizontal o vertical), recorriendo varias casillas si el camino está libre. No puede saltar piezas.
-                                 • Soldado: avanza una casilla hacia adelante
-                                            ataca en diagonal
-                                            no puede retroceder
-                            Si un movimiento no cumple estas reglas, el sistema lo rechazara.
+
+ 3.  Reglas de movimiento");
+                        Console.ResetColor();
+                        Console.ForegroundColor= ConsoleColor.White;
+                        Console.WriteLine(@"
+        Cada tipo de pieza tiene un comportamiento específico que debe respetarse en todo momento.
+                • Rey: puede moverse una sola casilla en cualquier dirección (horizontal, vertical o diagonal).
+                • Torre: puede moverse en línea recta (horizontal o vertical), recorriendo varias casillas
+                si el camino está libre. No puede saltar piezas.
+                • Soldado: avanza una casilla hacia adelante
+                           ataca en diagonal
+                           no puede retroceder
+         Si un movimiento no cumple estas reglas, el sistema lo rechazara.
                         ");
+                        Console.ResetColor();
                         break;
                     case 3:
                         Console.ForegroundColor = ConsoleColor.DarkBlue;
