@@ -303,7 +303,7 @@ namespace Juego_proyecto
             //variable de seguro, sirve como verificacion de las credenciales. variable valido, sirve para varificar el tryparse
             bool seguro, valido;
             string password;
-            int cantidad, opcion = 0, column = 0, row =0;
+            int cantidad, opcion = 0, column = 0, row =0, TotalJ1 =0, TotalJ2 = 0, Mayor = 0;
             int filaDestino = 0;
             int columnaDestino = 0;
             string[,] Table = new string[8,8];
@@ -534,35 +534,42 @@ namespace Juego_proyecto
                 {
                     R2.Juega = false;
                     R2.Muerto();
+                    TotalJ1 += 60;
                 }else if(r == T3.Fila && c == T3.Columna)
                 {
                     T3.Juega = false;
                     T3.Muerto();
+                    TotalJ1 += 10;
                 }
                 else if (r == T4.Fila && c == T4.Columna)
                 {
                     T4.Juega = false;
                     T4.Muerto();
+                    TotalJ1 += 10;
                 }
                 else if (r == S5.Fila && c == S5.Columna)
                 {
                     S5.Juega = false;
                     S5.Muerto();
+                    TotalJ1 += 10;
                 }
                 else if (r == S6.Fila && c == S6.Columna)
                 {
                     S6.Juega = false;
                     S6.Muerto();
+                    TotalJ1 += 10;
                 }
                 else if (r == S7.Fila && c == S7.Columna)
                 {
                     S7.Juega = false;
                     S7.Muerto();
+                    TotalJ1 += 10;
                 }
                 else if (r == S8.Fila && c == S8.Columna)
                 {
                     S8.Juega = false;
                     S8.Muerto();
+                    TotalJ1 += 10;
                 }
             }
             void CapturarJ2(int r, int c)
@@ -571,36 +578,43 @@ namespace Juego_proyecto
                 {
                     R1.Juega = false;
                     R1.Muerto();
+                    TotalJ2 += 60;
                 }
                 else if (r == T1.Fila && c == T1.Columna)
                 {
                     T1.Juega = false;
                     T1.Muerto();
+                    TotalJ2 += 10;
                 }
                 else if (r == T2.Fila && c == T2.Columna)
                 {
                     T2.Juega = false;
                     T2.Muerto();
+                    TotalJ2 += 10;
                 }
                 else if (r == S1.Fila && c == S1.Columna)
                 {
                     S1.Juega = false;
                     S1.Muerto();
+                    TotalJ2 += 10;
                 }
                 else if (r == S2.Fila && c == S2.Columna)
                 {
                     S2.Juega = false;
                     S2.Muerto();
+                    TotalJ2 += 10;
                 }
                 else if (r == S3.Fila && c == S3.Columna)
                 {
                     S3.Juega = false;
                     S3.Muerto();
+                    TotalJ2 += 10;
                 }
                 else if (r == S4.Fila && c == S4.Columna)
                 {
                     S4.Juega = false;
                     S4.Muerto();
+                    TotalJ2 += 10;
                 }
             }
             // PORCEDIMINETO PARA reiniciar
@@ -691,6 +705,9 @@ namespace Juego_proyecto
 
                 J1.Turno = true;
                 J2.Turno = false;
+
+                TotalJ2 = 0;
+                TotalJ1 = 0;
             }
 
             Pieza ObtenerPiezaEn(int f, int c)
@@ -1501,12 +1518,20 @@ namespace Juego_proyecto
                                 seguir = false;
                                 Console.ForegroundColor = ConsoleColor.DarkGreen;
                                 Console.WriteLine("Jugador 2 Gana!!!");
+                                if (Mayor < TotalJ2)
+                                {
+                                    Mayor = TotalJ2;
+                                }
                             }else if(R2.Juega == false)
                             {
                                 Vertablero();
                                 seguir = false;
                                 Console.ForegroundColor = ConsoleColor.DarkGreen;
                                 Console.WriteLine("Jugador 1 Gana!!!");
+                                if(Mayor < TotalJ1)
+                                {
+                                    Mayor = TotalJ1;
+                                }
                             }
                             J1.CambiarTurno();
                             J2.CambiarTurno();
@@ -1515,6 +1540,7 @@ namespace Juego_proyecto
 
 
                     case 2:
+                        Console.ForegroundColor = ConsoleColor.DarkBlue;
                         Console.WriteLine("                              Reglas del juego");
                         Console.WriteLine(@"
                      1.  Funcionamiento general del juego
@@ -1544,7 +1570,15 @@ namespace Juego_proyecto
                         ");
                         break;
                     case 3:
-                            
+                        Console.ForegroundColor = ConsoleColor.DarkBlue;
+                        if(Mayor == 0)
+                        {
+                            Console.WriteLine("Aun no se registran partidas");
+                        }else
+                        {
+                            Console.WriteLine($"El mayor punteo registrado es {Mayor}");
+                        }
+
 
                         break;
                     case 4:
